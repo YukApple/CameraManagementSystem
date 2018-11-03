@@ -1,0 +1,1802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SCMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Check_Date_Stop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="stop_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CheckOKNGQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CheckQuantityDaily" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="ftp_log" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ip" Type="nchar" Mode="In" />
+          <Parameter Name="ftp_error" Type="nchar" Mode="In" />
+          <Parameter Name="error_detail" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="row" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GET_FTP_LOGGER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="int" Mode="In" />
+          <Parameter Name="INSPECTION" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="LINEID" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="FTP_LOG" Type="int" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_FILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LINE" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="LINEID" Type="int" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="DESCRPT" Type="nvarchar(max)" />
+                <Property Name="CNT" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_HOURLY_HUY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="nvarchar" Mode="In" />
+          <Parameter Name="INSPECTION" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="lineId" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+                <Property Name="00" Type="int" />
+                <Property Name="01" Type="int" />
+                <Property Name="02" Type="int" />
+                <Property Name="03" Type="int" />
+                <Property Name="04" Type="int" />
+                <Property Name="05" Type="int" />
+                <Property Name="06" Type="int" />
+                <Property Name="07" Type="int" />
+                <Property Name="08" Type="int" />
+                <Property Name="09" Type="int" />
+                <Property Name="10" Type="int" />
+                <Property Name="11" Type="int" />
+                <Property Name="12" Type="int" />
+                <Property Name="13" Type="int" />
+                <Property Name="14" Type="int" />
+                <Property Name="15" Type="int" />
+                <Property Name="16" Type="int" />
+                <Property Name="17" Type="int" />
+                <Property Name="18" Type="int" />
+                <Property Name="19" Type="int" />
+                <Property Name="20" Type="int" />
+                <Property Name="21" Type="int" />
+                <Property Name="22" Type="int" />
+                <Property Name="23" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_HOURLY_HUY1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="nvarchar" Mode="In" />
+          <Parameter Name="INSPECTION" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="lineId" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+                <Property Name="00" Type="int" />
+                <Property Name="01" Type="int" />
+                <Property Name="02" Type="int" />
+                <Property Name="03" Type="int" />
+                <Property Name="04" Type="int" />
+                <Property Name="05" Type="int" />
+                <Property Name="06" Type="int" />
+                <Property Name="07" Type="int" />
+                <Property Name="08" Type="int" />
+                <Property Name="09" Type="int" />
+                <Property Name="10" Type="int" />
+                <Property Name="11" Type="int" />
+                <Property Name="12" Type="int" />
+                <Property Name="13" Type="int" />
+                <Property Name="14" Type="int" />
+                <Property Name="15" Type="int" />
+                <Property Name="16" Type="int" />
+                <Property Name="17" Type="int" />
+                <Property Name="18" Type="int" />
+                <Property Name="19" Type="int" />
+                <Property Name="20" Type="int" />
+                <Property Name="21" Type="int" />
+                <Property Name="22" Type="int" />
+                <Property Name="23" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_HOURLY_SI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="nvarchar" Mode="In" />
+          <Parameter Name="INSPECTION" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="lineId" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+                <Property Name="00" Type="int" />
+                <Property Name="01" Type="int" />
+                <Property Name="02" Type="int" />
+                <Property Name="03" Type="int" />
+                <Property Name="04" Type="int" />
+                <Property Name="05" Type="int" />
+                <Property Name="06" Type="int" />
+                <Property Name="07" Type="int" />
+                <Property Name="08" Type="int" />
+                <Property Name="09" Type="int" />
+                <Property Name="10" Type="int" />
+                <Property Name="11" Type="int" />
+                <Property Name="12" Type="int" />
+                <Property Name="13" Type="int" />
+                <Property Name="14" Type="int" />
+                <Property Name="15" Type="int" />
+                <Property Name="16" Type="int" />
+                <Property Name="17" Type="int" />
+                <Property Name="18" Type="int" />
+                <Property Name="19" Type="int" />
+                <Property Name="20" Type="int" />
+                <Property Name="21" Type="int" />
+                <Property Name="22" Type="int" />
+                <Property Name="23" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_HOURLY_SI1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="nvarchar" Mode="In" />
+          <Parameter Name="INSPECTION" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="lineId" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+                <Property Name="00" Type="int" />
+                <Property Name="01" Type="int" />
+                <Property Name="02" Type="int" />
+                <Property Name="03" Type="int" />
+                <Property Name="04" Type="int" />
+                <Property Name="05" Type="int" />
+                <Property Name="06" Type="int" />
+                <Property Name="07" Type="int" />
+                <Property Name="08" Type="int" />
+                <Property Name="09" Type="int" />
+                <Property Name="10" Type="int" />
+                <Property Name="11" Type="int" />
+                <Property Name="12" Type="int" />
+                <Property Name="13" Type="int" />
+                <Property Name="14" Type="int" />
+                <Property Name="15" Type="int" />
+                <Property Name="16" Type="int" />
+                <Property Name="17" Type="int" />
+                <Property Name="18" Type="int" />
+                <Property Name="19" Type="int" />
+                <Property Name="20" Type="int" />
+                <Property Name="21" Type="int" />
+                <Property Name="22" Type="int" />
+                <Property Name="23" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GET_FTP_LOGGER_Si" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="int" Mode="In" />
+          <Parameter Name="INSPECTION" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="LINEID" Type="int" Nullable="false" />
+                <Property Name="MACHINEID" Type="int" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="FTP_LOG" Type="int" />
+                <Property Name="TOT_FTP_LOG" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="Get_List_Status_Day" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="nvarchar" Mode="In" />
+          <Parameter Name="start" Type="datetime" Mode="In" />
+          <Parameter Name="stop" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Get_List_Status_Day_Hour_Total" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start" Type="datetime" Mode="In" />
+          <Parameter Name="stop" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GET_NOOFMCSTATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODEL" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllDataModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getDailyQty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="model" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="INSP" Type="varchar" MaxLength="3" Nullable="false" />
+                <Property Name="LINE" Type="varchar" MaxLength="20" />
+                <Property Name="MACHINE_ID" Type="varchar" MaxLength="20" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="PASS_FAIL" Type="varchar" MaxLength="50" />
+                <Property Name="Qty" Type="int" />
+                <Property Name="Total" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getDailyQty_PCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="model" Type="int" Mode="In" />
+          <Parameter Name="process" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="insp" Type="varchar" MaxLength="4" Nullable="false" />
+                <Property Name="line" Type="varchar" MaxLength="20" />
+                <Property Name="machine_id" Type="varchar" MaxLength="20" />
+                <Property Name="pass_fail" Type="varchar" MaxLength="100" />
+                <Property Name="검사수량" Type="int" />
+                <Property Name="PCT" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getDailyQty_SUM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="model" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="INSP" Type="varchar" MaxLength="20" />
+                <Property Name="OK_NG" Type="varchar" MaxLength="4" Nullable="false" />
+                <Property Name="검사수량" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getDailyQty1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="model" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="INSP" Type="varchar" MaxLength="3" Nullable="false" />
+                <Property Name="LINE" Type="varchar" MaxLength="20" />
+                <Property Name="MACHINE_ID" Type="varchar" MaxLength="20" />
+                <Property Name="module_id" Type="varchar" MaxLength="20" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="PASS_FAIL" Type="varchar" MaxLength="50" />
+                <Property Name="Qty" Type="int" />
+                <Property Name="Total" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getDailyQty2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="model" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="INSP" Type="varchar" MaxLength="3" Nullable="false" />
+                <Property Name="LINE" Type="varchar" MaxLength="20" />
+                <Property Name="MACHINE_ID" Type="varchar" MaxLength="20" />
+                <Property Name="IP" Type="nchar" MaxLength="20" Nullable="false" />
+                <Property Name="PASS_FAIL" Type="varchar" MaxLength="50" />
+                <Property Name="Qty" Type="int" />
+                <Property Name="Total" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getDailyQtyOIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="modelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDataLineModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetProcessLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="linename" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetTotalDailyOIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="model" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="GETTOTALQTY_OIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GETTOTALQTYINPUT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MODELID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_DualCal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_DualCAL_Handler_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_DualCAL_Handler_Scara" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_DualCAL_Handler_Slave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_50cm_Tele" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_AF_Cal_Rangechecklog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Handler_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Handler_Scara" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Handler_Slave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Image_RGBLog_Tele" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Image_RGBLog_Wide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_LongAF_Tele" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F15" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F24" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_FT_Marco_AF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_HORI_Handler_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_HORI_Handler_Slave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_Ois" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_AE_Cal_Ratio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Hander_Scara" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Handler_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Handler_Slave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Tele_AE_Cal_Check" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Tele_AFcode_Compare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="NumberOfMachine_QM_PAF_Wide_AFcode_Compare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Proc_Create_CM_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GEN" Type="nchar" Mode="In" />
+          <Parameter Name="fullname" Type="nvarchar" Mode="In" />
+          <Parameter Name="pass" Type="text" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Find_CM_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GEN" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Find_LineModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="model" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Find_LineZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="zone" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_FindAll_CM_Line" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Proc_FindAll_CM_Machine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Proc_FindAll_CM_Model" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Proc_FindAll_CM_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Proc_FindAll_CM_Zone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Proc_FindUser_CM_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nchar" Mode="In" />
+          <Parameter Name="pass" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PROC_GETNOOFMCMODEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_GETNOOFMCMODELSTATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_GETQTYDAILYHOUR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PROC_GETQTYDAILYHOUR_SINGLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Proc_Machines" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateMachine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ip" Type="nchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SCMSModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="GET_FTP_LOGGER_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LINEID" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FTP_LOG" Type="Int32" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_FILE_Result">
+          <Property Name="LINEID" Type="Int32" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="DESCRPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CNT" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_HOURLY_HUY_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lineId" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+          <Property Name="C00" Type="Int32" />
+          <Property Name="C01" Type="Int32" />
+          <Property Name="C02" Type="Int32" />
+          <Property Name="C03" Type="Int32" />
+          <Property Name="C04" Type="Int32" />
+          <Property Name="C05" Type="Int32" />
+          <Property Name="C06" Type="Int32" />
+          <Property Name="C07" Type="Int32" />
+          <Property Name="C08" Type="Int32" />
+          <Property Name="C09" Type="Int32" />
+          <Property Name="C10" Type="Int32" />
+          <Property Name="C11" Type="Int32" />
+          <Property Name="C12" Type="Int32" />
+          <Property Name="C13" Type="Int32" />
+          <Property Name="C14" Type="Int32" />
+          <Property Name="C15" Type="Int32" />
+          <Property Name="C16" Type="Int32" />
+          <Property Name="C17" Type="Int32" />
+          <Property Name="C18" Type="Int32" />
+          <Property Name="C19" Type="Int32" />
+          <Property Name="C20" Type="Int32" />
+          <Property Name="C21" Type="Int32" />
+          <Property Name="C22" Type="Int32" />
+          <Property Name="C23" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_HOURLY_HUY1_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lineId" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+          <Property Name="C00" Type="Int32" />
+          <Property Name="C01" Type="Int32" />
+          <Property Name="C02" Type="Int32" />
+          <Property Name="C03" Type="Int32" />
+          <Property Name="C04" Type="Int32" />
+          <Property Name="C05" Type="Int32" />
+          <Property Name="C06" Type="Int32" />
+          <Property Name="C07" Type="Int32" />
+          <Property Name="C08" Type="Int32" />
+          <Property Name="C09" Type="Int32" />
+          <Property Name="C10" Type="Int32" />
+          <Property Name="C11" Type="Int32" />
+          <Property Name="C12" Type="Int32" />
+          <Property Name="C13" Type="Int32" />
+          <Property Name="C14" Type="Int32" />
+          <Property Name="C15" Type="Int32" />
+          <Property Name="C16" Type="Int32" />
+          <Property Name="C17" Type="Int32" />
+          <Property Name="C18" Type="Int32" />
+          <Property Name="C19" Type="Int32" />
+          <Property Name="C20" Type="Int32" />
+          <Property Name="C21" Type="Int32" />
+          <Property Name="C22" Type="Int32" />
+          <Property Name="C23" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_HOURLY_SI_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lineId" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+          <Property Name="C00" Type="Int32" />
+          <Property Name="C01" Type="Int32" />
+          <Property Name="C02" Type="Int32" />
+          <Property Name="C03" Type="Int32" />
+          <Property Name="C04" Type="Int32" />
+          <Property Name="C05" Type="Int32" />
+          <Property Name="C06" Type="Int32" />
+          <Property Name="C07" Type="Int32" />
+          <Property Name="C08" Type="Int32" />
+          <Property Name="C09" Type="Int32" />
+          <Property Name="C10" Type="Int32" />
+          <Property Name="C11" Type="Int32" />
+          <Property Name="C12" Type="Int32" />
+          <Property Name="C13" Type="Int32" />
+          <Property Name="C14" Type="Int32" />
+          <Property Name="C15" Type="Int32" />
+          <Property Name="C16" Type="Int32" />
+          <Property Name="C17" Type="Int32" />
+          <Property Name="C18" Type="Int32" />
+          <Property Name="C19" Type="Int32" />
+          <Property Name="C20" Type="Int32" />
+          <Property Name="C21" Type="Int32" />
+          <Property Name="C22" Type="Int32" />
+          <Property Name="C23" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_HOURLY_SI1_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lineId" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+          <Property Name="C00" Type="Int32" />
+          <Property Name="C01" Type="Int32" />
+          <Property Name="C02" Type="Int32" />
+          <Property Name="C03" Type="Int32" />
+          <Property Name="C04" Type="Int32" />
+          <Property Name="C05" Type="Int32" />
+          <Property Name="C06" Type="Int32" />
+          <Property Name="C07" Type="Int32" />
+          <Property Name="C08" Type="Int32" />
+          <Property Name="C09" Type="Int32" />
+          <Property Name="C10" Type="Int32" />
+          <Property Name="C11" Type="Int32" />
+          <Property Name="C12" Type="Int32" />
+          <Property Name="C13" Type="Int32" />
+          <Property Name="C14" Type="Int32" />
+          <Property Name="C15" Type="Int32" />
+          <Property Name="C16" Type="Int32" />
+          <Property Name="C17" Type="Int32" />
+          <Property Name="C18" Type="Int32" />
+          <Property Name="C19" Type="Int32" />
+          <Property Name="C20" Type="Int32" />
+          <Property Name="C21" Type="Int32" />
+          <Property Name="C22" Type="Int32" />
+          <Property Name="C23" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="GET_FTP_LOGGER_Si_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LINEID" Type="Int32" Nullable="false" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FTP_LOG" Type="Int32" />
+          <Property Name="TOT_FTP_LOG" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="getDailyQty_Result">
+          <Property Name="INSP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LINE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MACHINE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASS_FAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="getDailyQty_PCT_Result">
+          <Property Name="insp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="line" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="machine_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pass_fail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="검사수량" Type="Int32" />
+          <Property Name="PCT" Type="Double" />
+        </ComplexType>
+        <ComplexType Name="getDailyQty_SUM_Result">
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INSP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OK_NG" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="검사수량" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="getDailyQty1_Result">
+          <Property Name="INSP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LINE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MACHINE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="module_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASS_FAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="getDailyQty2_Result">
+          <Property Name="INSP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LINE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MACHINE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASS_FAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+        </ComplexType>
+        <EntityContainer Name="SCMSEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GET_FTP_LOGGER" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="Int32" />
+            <Parameter Name="INSPECTION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_FILE" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_FILE_Result)">
+          <Parameter Name="LINE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_HOURLY_HUY" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_HOURLY_HUY_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="INSPECTION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_HOURLY_HUY1" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_HOURLY_HUY1_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="INSPECTION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_HOURLY_SI" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_HOURLY_SI_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="INSPECTION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_HOURLY_SI1" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_HOURLY_SI1_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="INSPECTION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_FTP_LOGGER_Si" IsComposable="true" ReturnType="Collection(SCMSModel.GET_FTP_LOGGER_Si_Result)">
+            <Parameter Name="MODEL" Mode="In" Type="Int32" />
+            <Parameter Name="INSPECTION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getDailyQty" IsComposable="true" ReturnType="Collection(SCMSModel.getDailyQty_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="model" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getDailyQty_PCT" IsComposable="true" ReturnType="Collection(SCMSModel.getDailyQty_PCT_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="model" Mode="In" Type="Int32" />
+            <Parameter Name="process" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getDailyQty_SUM" IsComposable="true" ReturnType="Collection(SCMSModel.getDailyQty_SUM_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="model" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getDailyQty1" IsComposable="true" ReturnType="Collection(SCMSModel.getDailyQty1_Result)">
+          <Parameter Name="model" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getDailyQty2" IsComposable="true" ReturnType="Collection(SCMSModel.getDailyQty2_Result)">
+          <Parameter Name="model" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckOKNGQuantity" ReturnType="Collection(SCMSModel.CheckOKNGQuantity_Result)" />
+          <FunctionImport Name="CheckQuantityDaily" ReturnType="Collection(SCMSModel.CheckQuantityDaily_Result)" />
+          <FunctionImport Name="ftp_log">
+            <Parameter Name="ip" Mode="In" Type="String" />
+            <Parameter Name="ftp_error" Mode="In" Type="String" />
+            <Parameter Name="error_detail" Mode="In" Type="String" />
+            <Parameter Name="row" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_List_Status_Day" ReturnType="Collection(SCMSModel.Get_List_Status_Day_Result)">
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="start" Mode="In" Type="DateTime" />
+            <Parameter Name="stop" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_List_Status_Day_Hour_Total" ReturnType="Collection(SCMSModel.Get_List_Status_Day_Hour_Total_Result)">
+            <Parameter Name="start" Mode="In" Type="DateTime" />
+            <Parameter Name="stop" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GET_NOOFMCSTATUS" ReturnType="Collection(SCMSModel.GET_NOOFMCSTATUS_Result)">
+          <Parameter Name="MODEL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllDataModel" ReturnType="Collection(SCMSModel.GetAllDataModel_Result)" />
+          <FunctionImport Name="getDailyQtyOIS" ReturnType="Collection(SCMSModel.getDailyQtyOIS_Result)">
+          <Parameter Name="modelID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDataLineModel" ReturnType="Collection(SCMSModel.GetDataLineModel_Result)" />
+          <FunctionImport Name="GetProcessLine" ReturnType="Collection(String)">
+          <Parameter Name="linename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetTotalDailyOIS" ReturnType="Collection(Int32)">
+            <Parameter Name="model" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GETTOTALQTY_OIS" ReturnType="Collection(SCMSModel.GETTOTALQTY_OIS_Result)" />
+          <FunctionImport Name="GETTOTALQTYINPUT" ReturnType="Collection(Int32)">
+          <Parameter Name="MODELID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_DualCal" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_DualCal_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_DualCAL_Handler_Master">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_DualCAL_Handler_Scara">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_DualCAL_Handler_Slave">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_50cm_Tele" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_50cm_Tele_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_AF_Cal_Rangechecklog" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_AF_Cal_Rangechecklog_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Handler_Master">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Handler_Scara">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Handler_Slave">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Image_RGBLog_Tele" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_Image_RGBLog_Tele_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Image_RGBLog_Wide" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_Image_RGBLog_Wide_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_LongAF_Tele" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_LongAF_Tele_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F15" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_LongAF_Wide_B_F15_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F24" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_LongAF_Wide_B_F24_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_FT_Marco_AF" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_FT_Marco_AF_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_HORI_Handler_Master">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_HORI_Handler_Slave">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_Ois" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_Ois_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_AE_Cal_Ratio" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_PAF_AE_Cal_Ratio_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Hander_Scara">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Handler_Master">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Handler_Slave">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Tele_AE_Cal_Check" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_PAF_Tele_AE_Cal_Check_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Tele_AFcode_Compare" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_PAF_Tele_AFcode_Compare_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="NumberOfMachine_QM_PAF_Wide_AFcode_Compare" ReturnType="Collection(SCMSModel.NumberOfMachine_QM_PAF_Wide_AFcode_Compare_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Create_CM_Account">
+            <Parameter Name="GEN" Mode="In" Type="String" />
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Find_CM_Account" ReturnType="Collection(SCMSModel.Proc_Find_CM_Account_Result)">
+          <Parameter Name="GEN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_FindUser_CM_Account">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_GETNOOFMCMODEL" ReturnType="Collection(SCMSModel.PROC_GETNOOFMCMODEL_Result)" />
+          <FunctionImport Name="PROC_GETNOOFMCMODELSTATUS" ReturnType="Collection(SCMSModel.PROC_GETNOOFMCMODELSTATUS_Result)" />
+          <FunctionImport Name="PROC_GETQTYDAILYHOUR" ReturnType="Collection(SCMSModel.PROC_GETQTYDAILYHOUR_Result)">
+          <Parameter Name="DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_GETQTYDAILYHOUR_SINGLE" ReturnType="Collection(SCMSModel.PROC_GETQTYDAILYHOUR_SINGLE_Result)">
+          <Parameter Name="DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Machines" ReturnType="Collection(SCMSModel.Proc_Machines_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SCMSModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SCMSModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateMachine">
+            <Parameter Name="ip" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_FindAll_CM_Machine" ReturnType="Collection(SCMSModel.Proc_FindAll_CM_Machine_Result)" />
+          <FunctionImport Name="Proc_FindAll_CM_Line" ReturnType="Collection(SCMSModel.Proc_FindAll_CM_Line_Result)" />
+          <FunctionImport Name="Proc_FindAll_CM_Model" ReturnType="Collection(SCMSModel.Proc_FindAll_CM_Model_Result)" />
+          <FunctionImport Name="Proc_FindAll_CM_Process" ReturnType="Collection(SCMSModel.Proc_FindAll_CM_Process_Result)" />
+          <FunctionImport Name="Proc_FindAll_CM_Zone" ReturnType="Collection(SCMSModel.Proc_FindAll_CM_Zone_Result)" />
+          <FunctionImport Name="Proc_Find_LineModel" ReturnType="Collection(String)">
+            <Parameter Name="model" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Find_LineZone" ReturnType="Collection(String)">
+            <Parameter Name="zone" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="CheckOKNGQuantity_Result">
+          <Property Type="String" Name="Result" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Model_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="process_name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="line_name" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Qty" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CheckQuantityDaily_Result">
+          <Property Type="String" Name="Model_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="process_name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="line_name" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Qty" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_List_Status_Day_Result">
+          <Property Type="String" Name="model_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="date_index" Nullable="true" />
+          <Property Type="Int32" Name="total_hour" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_List_Status_Day_Hour_Total_Result">
+          <Property Type="String" Name="model_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="date_index" Nullable="true" />
+          <Property Type="Int32" Name="total_hour" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GET_NOOFMCSTATUS_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="NO_OF_MC" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetAllDataModel_Result">
+          <Property Type="String" Name="process" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="modelId" Nullable="true" />
+          <Property Type="String" Name="line" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="machine_id" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="socket" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="result" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <Property Type="Int32" Name="hour" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getDailyQtyOIS_Result">
+          <Property Type="String" Name="INSP" Nullable="false" MaxLength="3" />
+          <Property Type="Int32" Name="LINE" Nullable="false" />
+          <Property Type="String" Name="IP" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="QTY" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetDataLineModel_Result">
+          <Property Type="String" Name="MODEL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Line" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Qty" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GETTOTALQTY_OIS_Result">
+          <Property Type="String" Name="Expr1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="machine_id" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="socket" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="module_id" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="cnt" Nullable="true" />
+          <Property Type="String" Name="DATE_TIME" Nullable="true" MaxLength="4" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_DualCal_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_50cm_Tele_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_AF_Cal_Rangechecklog_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_Image_RGBLog_Tele_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_Image_RGBLog_Wide_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_LongAF_Tele_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F15_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_LongAF_Wide_B_F24_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_FT_Marco_AF_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_Ois_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_PAF_AE_Cal_Ratio_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_PAF_Tele_AE_Cal_Check_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_PAF_Tele_AFcode_Compare_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="NumberOfMachine_QM_PAF_Wide_AFcode_Compare_Result">
+          <Property Type="String" Name="file_name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="Decimal" Name="dem" Nullable="true" Precision="33" Scale="11" />
+        </ComplexType>
+        <ComplexType Name="Proc_Find_CM_Account_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="GEN" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="full_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="approved" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PROC_GETNOOFMCMODEL_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="NO_OF_MC" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PROC_GETNOOFMCMODELSTATUS_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="NO_OF_MC" Nullable="true" />
+          <Property Type="String" Name="C_STATUS" Nullable="true" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="PROC_GETQTYDAILYHOUR_Result">
+          <Property Type="String" Name="MODEL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DATE_TIME" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="QTY" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PROC_GETQTYDAILYHOUR_SINGLE_Result">
+          <Property Type="String" Name="MODEL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DATE_TIME" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="QTY" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_Machines_Result">
+          <Property Type="String" Name="IP" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Process_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Machine_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Zone_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Model_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Line" Nullable="true" />
+          <Property Type="DateTime" Name="Last_Update" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Proc_FindAll_CM_Machine_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="ip" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="lineId" Nullable="false" />
+          <Property Type="Int32" Name="socketId" Nullable="true" />
+          <Property Type="Int32" Name="SOCKETQTY" Nullable="true" />
+          <Property Type="String" Name="MACHINE_SPEC" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SCARA_YN" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="portId" Nullable="true" />
+          <Property Type="Int32" Name="processId" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="ip_equiment" Nullable="true" />
+          <Property Type="DateTime" Name="update_time" Nullable="true" Precision="23" />
+          <Property Type="String" Name="log_path" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="log_path2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="serial_machine" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="pathdll" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pathexe" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pathremote" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="softwarename" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_FindAll_CM_Line_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="zoneId" Nullable="false" />
+          <Property Type="Int32" Name="modelId" Nullable="true" />
+          <Property Type="String" Name="line_group" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_FindAll_CM_Model_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="code" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="projectId" Nullable="false" />
+          <Property Type="DateTime" Name="create_date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_FindAll_CM_Process_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_FindAll_CM_Zone_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCMSModelStoreContainer" CdmEntityContainer="SCMSEntities">
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER" FunctionImportName="GET_FTP_LOGGER">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LINEID" ColumnName="LINEID" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="FTP_LOG" ColumnName="FTP_LOG" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_FILE" FunctionImportName="GET_FTP_LOGGER_FILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_FILE_Result">
+                <ScalarProperty Name="LINEID" ColumnName="LINEID" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="DESCRPT" ColumnName="DESCRPT" />
+                <ScalarProperty Name="CNT" ColumnName="CNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_HOURLY_HUY" FunctionImportName="GET_FTP_LOGGER_HOURLY_HUY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_HOURLY_HUY_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="lineId" ColumnName="lineId" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+                <ScalarProperty Name="C00" ColumnName="00" />
+                <ScalarProperty Name="C01" ColumnName="01" />
+                <ScalarProperty Name="C02" ColumnName="02" />
+                <ScalarProperty Name="C03" ColumnName="03" />
+                <ScalarProperty Name="C04" ColumnName="04" />
+                <ScalarProperty Name="C05" ColumnName="05" />
+                <ScalarProperty Name="C06" ColumnName="06" />
+                <ScalarProperty Name="C07" ColumnName="07" />
+                <ScalarProperty Name="C08" ColumnName="08" />
+                <ScalarProperty Name="C09" ColumnName="09" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+                <ScalarProperty Name="C13" ColumnName="13" />
+                <ScalarProperty Name="C14" ColumnName="14" />
+                <ScalarProperty Name="C15" ColumnName="15" />
+                <ScalarProperty Name="C16" ColumnName="16" />
+                <ScalarProperty Name="C17" ColumnName="17" />
+                <ScalarProperty Name="C18" ColumnName="18" />
+                <ScalarProperty Name="C19" ColumnName="19" />
+                <ScalarProperty Name="C20" ColumnName="20" />
+                <ScalarProperty Name="C21" ColumnName="21" />
+                <ScalarProperty Name="C22" ColumnName="22" />
+                <ScalarProperty Name="C23" ColumnName="23" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_HOURLY_HUY1" FunctionImportName="GET_FTP_LOGGER_HOURLY_HUY1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_HOURLY_HUY1_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="lineId" ColumnName="lineId" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+                <ScalarProperty Name="C00" ColumnName="00" />
+                <ScalarProperty Name="C01" ColumnName="01" />
+                <ScalarProperty Name="C02" ColumnName="02" />
+                <ScalarProperty Name="C03" ColumnName="03" />
+                <ScalarProperty Name="C04" ColumnName="04" />
+                <ScalarProperty Name="C05" ColumnName="05" />
+                <ScalarProperty Name="C06" ColumnName="06" />
+                <ScalarProperty Name="C07" ColumnName="07" />
+                <ScalarProperty Name="C08" ColumnName="08" />
+                <ScalarProperty Name="C09" ColumnName="09" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+                <ScalarProperty Name="C13" ColumnName="13" />
+                <ScalarProperty Name="C14" ColumnName="14" />
+                <ScalarProperty Name="C15" ColumnName="15" />
+                <ScalarProperty Name="C16" ColumnName="16" />
+                <ScalarProperty Name="C17" ColumnName="17" />
+                <ScalarProperty Name="C18" ColumnName="18" />
+                <ScalarProperty Name="C19" ColumnName="19" />
+                <ScalarProperty Name="C20" ColumnName="20" />
+                <ScalarProperty Name="C21" ColumnName="21" />
+                <ScalarProperty Name="C22" ColumnName="22" />
+                <ScalarProperty Name="C23" ColumnName="23" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_HOURLY_SI" FunctionImportName="GET_FTP_LOGGER_HOURLY_SI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_HOURLY_SI_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="lineId" ColumnName="lineId" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+                <ScalarProperty Name="C00" ColumnName="00" />
+                <ScalarProperty Name="C01" ColumnName="01" />
+                <ScalarProperty Name="C02" ColumnName="02" />
+                <ScalarProperty Name="C03" ColumnName="03" />
+                <ScalarProperty Name="C04" ColumnName="04" />
+                <ScalarProperty Name="C05" ColumnName="05" />
+                <ScalarProperty Name="C06" ColumnName="06" />
+                <ScalarProperty Name="C07" ColumnName="07" />
+                <ScalarProperty Name="C08" ColumnName="08" />
+                <ScalarProperty Name="C09" ColumnName="09" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+                <ScalarProperty Name="C13" ColumnName="13" />
+                <ScalarProperty Name="C14" ColumnName="14" />
+                <ScalarProperty Name="C15" ColumnName="15" />
+                <ScalarProperty Name="C16" ColumnName="16" />
+                <ScalarProperty Name="C17" ColumnName="17" />
+                <ScalarProperty Name="C18" ColumnName="18" />
+                <ScalarProperty Name="C19" ColumnName="19" />
+                <ScalarProperty Name="C20" ColumnName="20" />
+                <ScalarProperty Name="C21" ColumnName="21" />
+                <ScalarProperty Name="C22" ColumnName="22" />
+                <ScalarProperty Name="C23" ColumnName="23" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_HOURLY_SI1" FunctionImportName="GET_FTP_LOGGER_HOURLY_SI1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_HOURLY_SI1_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="lineId" ColumnName="lineId" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+                <ScalarProperty Name="C00" ColumnName="00" />
+                <ScalarProperty Name="C01" ColumnName="01" />
+                <ScalarProperty Name="C02" ColumnName="02" />
+                <ScalarProperty Name="C03" ColumnName="03" />
+                <ScalarProperty Name="C04" ColumnName="04" />
+                <ScalarProperty Name="C05" ColumnName="05" />
+                <ScalarProperty Name="C06" ColumnName="06" />
+                <ScalarProperty Name="C07" ColumnName="07" />
+                <ScalarProperty Name="C08" ColumnName="08" />
+                <ScalarProperty Name="C09" ColumnName="09" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+                <ScalarProperty Name="C13" ColumnName="13" />
+                <ScalarProperty Name="C14" ColumnName="14" />
+                <ScalarProperty Name="C15" ColumnName="15" />
+                <ScalarProperty Name="C16" ColumnName="16" />
+                <ScalarProperty Name="C17" ColumnName="17" />
+                <ScalarProperty Name="C18" ColumnName="18" />
+                <ScalarProperty Name="C19" ColumnName="19" />
+                <ScalarProperty Name="C20" ColumnName="20" />
+                <ScalarProperty Name="C21" ColumnName="21" />
+                <ScalarProperty Name="C22" ColumnName="22" />
+                <ScalarProperty Name="C23" ColumnName="23" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.GET_FTP_LOGGER_Si" FunctionImportName="GET_FTP_LOGGER_Si">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_FTP_LOGGER_Si_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LINEID" ColumnName="LINEID" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="FTP_LOG" ColumnName="FTP_LOG" />
+                <ScalarProperty Name="TOT_FTP_LOG" ColumnName="TOT_FTP_LOG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.getDailyQty" FunctionImportName="getDailyQty">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQty_Result">
+                <ScalarProperty Name="INSP" ColumnName="INSP" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="MACHINE_ID" ColumnName="MACHINE_ID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="PASS_FAIL" ColumnName="PASS_FAIL" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.getDailyQty_PCT" FunctionImportName="getDailyQty_PCT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQty_PCT_Result">
+                <ScalarProperty Name="insp" ColumnName="insp" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="machine_id" ColumnName="machine_id" />
+                <ScalarProperty Name="pass_fail" ColumnName="pass_fail" />
+                <ScalarProperty Name="검사수량" ColumnName="검사수량" />
+                <ScalarProperty Name="PCT" ColumnName="PCT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.getDailyQty_SUM" FunctionImportName="getDailyQty_SUM">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQty_SUM_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="INSP" ColumnName="INSP" />
+                <ScalarProperty Name="OK_NG" ColumnName="OK_NG" />
+                <ScalarProperty Name="검사수량" ColumnName="검사수량" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.getDailyQty1" FunctionImportName="getDailyQty1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQty1_Result">
+                <ScalarProperty Name="INSP" ColumnName="INSP" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="MACHINE_ID" ColumnName="MACHINE_ID" />
+                <ScalarProperty Name="module_id" ColumnName="module_id" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="PASS_FAIL" ColumnName="PASS_FAIL" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="SCMSModel.Store.getDailyQty2" FunctionImportName="getDailyQty2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQty2_Result">
+                <ScalarProperty Name="INSP" ColumnName="INSP" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="MACHINE_ID" ColumnName="MACHINE_ID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="PASS_FAIL" ColumnName="PASS_FAIL" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckOKNGQuantity" FunctionName="SCMSModel.Store.CheckOKNGQuantity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.CheckOKNGQuantity_Result">
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="process_name" ColumnName="process_name" />
+                <ScalarProperty Name="line_name" ColumnName="line_name" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckQuantityDaily" FunctionName="SCMSModel.Store.CheckQuantityDaily">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.CheckQuantityDaily_Result">
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="process_name" ColumnName="process_name" />
+                <ScalarProperty Name="line_name" ColumnName="line_name" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ftp_log" FunctionName="SCMSModel.Store.ftp_log" />
+          <FunctionImportMapping FunctionImportName="Get_List_Status_Day" FunctionName="SCMSModel.Store.Get_List_Status_Day">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Get_List_Status_Day_Result">
+                <ScalarProperty Name="model_name" ColumnName="model_name" />
+                <ScalarProperty Name="date_index" ColumnName="date_index" />
+                <ScalarProperty Name="total_hour" ColumnName="total_hour" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_List_Status_Day_Hour_Total" FunctionName="SCMSModel.Store.Get_List_Status_Day_Hour_Total">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Get_List_Status_Day_Hour_Total_Result">
+                <ScalarProperty Name="model_name" ColumnName="model_name" />
+                <ScalarProperty Name="date_index" ColumnName="date_index" />
+                <ScalarProperty Name="total_hour" ColumnName="total_hour" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_NOOFMCSTATUS" FunctionName="SCMSModel.Store.GET_NOOFMCSTATUS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GET_NOOFMCSTATUS_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="NO_OF_MC" ColumnName="NO_OF_MC" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllDataModel" FunctionName="SCMSModel.Store.GetAllDataModel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GetAllDataModel_Result">
+                <ScalarProperty Name="process" ColumnName="process" />
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="machine_id" ColumnName="machine_id" />
+                <ScalarProperty Name="socket" ColumnName="socket" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="hour" ColumnName="hour" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getDailyQtyOIS" FunctionName="SCMSModel.Store.getDailyQtyOIS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.getDailyQtyOIS_Result">
+                <ScalarProperty Name="INSP" ColumnName="INSP" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDataLineModel" FunctionName="SCMSModel.Store.GetDataLineModel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GetDataLineModel_Result">
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProcessLine" FunctionName="SCMSModel.Store.GetProcessLine" />
+          <FunctionImportMapping FunctionImportName="GetTotalDailyOIS" FunctionName="SCMSModel.Store.GetTotalDailyOIS" />
+          <FunctionImportMapping FunctionImportName="GETTOTALQTY_OIS" FunctionName="SCMSModel.Store.GETTOTALQTY_OIS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.GETTOTALQTY_OIS_Result">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="machine_id" ColumnName="machine_id" />
+                <ScalarProperty Name="socket" ColumnName="socket" />
+                <ScalarProperty Name="module_id" ColumnName="module_id" />
+                <ScalarProperty Name="cnt" ColumnName="cnt" />
+                <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GETTOTALQTYINPUT" FunctionName="SCMSModel.Store.GETTOTALQTYINPUT" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_DualCal" FunctionName="SCMSModel.Store.NumberOfMachine_QM_DualCal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_DualCal_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_DualCAL_Handler_Master" FunctionName="SCMSModel.Store.NumberOfMachine_QM_DualCAL_Handler_Master" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_DualCAL_Handler_Scara" FunctionName="SCMSModel.Store.NumberOfMachine_QM_DualCAL_Handler_Scara" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_DualCAL_Handler_Slave" FunctionName="SCMSModel.Store.NumberOfMachine_QM_DualCAL_Handler_Slave" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_50cm_Tele" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_50cm_Tele">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_50cm_Tele_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_AF_Cal_Rangechecklog" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_AF_Cal_Rangechecklog">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_AF_Cal_Rangechecklog_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Handler_Master" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Handler_Master" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Handler_Scara" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Handler_Scara" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Handler_Slave" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Handler_Slave" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Image_RGBLog_Tele" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Image_RGBLog_Tele">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_Image_RGBLog_Tele_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Image_RGBLog_Wide" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Image_RGBLog_Wide">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_Image_RGBLog_Wide_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_LongAF_Tele" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_LongAF_Tele">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_LongAF_Tele_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_LongAF_Wide_B_F15" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_LongAF_Wide_B_F15">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_LongAF_Wide_B_F15_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_LongAF_Wide_B_F24" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_LongAF_Wide_B_F24">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_LongAF_Wide_B_F24_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_FT_Marco_AF" FunctionName="SCMSModel.Store.NumberOfMachine_QM_FT_Marco_AF">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_FT_Marco_AF_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_HORI_Handler_Master" FunctionName="SCMSModel.Store.NumberOfMachine_QM_HORI_Handler_Master" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_HORI_Handler_Slave" FunctionName="SCMSModel.Store.NumberOfMachine_QM_HORI_Handler_Slave" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_Ois" FunctionName="SCMSModel.Store.NumberOfMachine_QM_Ois">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_Ois_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_AE_Cal_Ratio" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_AE_Cal_Ratio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_PAF_AE_Cal_Ratio_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Hander_Scara" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Hander_Scara" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Handler_Master" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Handler_Master" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Handler_Slave" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Handler_Slave" />
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Tele_AE_Cal_Check" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Tele_AE_Cal_Check">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_PAF_Tele_AE_Cal_Check_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Tele_AFcode_Compare" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Tele_AFcode_Compare">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_PAF_Tele_AFcode_Compare_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NumberOfMachine_QM_PAF_Wide_AFcode_Compare" FunctionName="SCMSModel.Store.NumberOfMachine_QM_PAF_Wide_AFcode_Compare">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.NumberOfMachine_QM_PAF_Wide_AFcode_Compare_Result">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="dem" ColumnName="dem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Create_CM_Account" FunctionName="SCMSModel.Store.Proc_Create_CM_Account" />
+          <FunctionImportMapping FunctionImportName="Proc_Find_CM_Account" FunctionName="SCMSModel.Store.Proc_Find_CM_Account">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_Find_CM_Account_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GEN" ColumnName="GEN" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_FindUser_CM_Account" FunctionName="SCMSModel.Store.Proc_FindUser_CM_Account" />
+          <FunctionImportMapping FunctionImportName="PROC_GETNOOFMCMODEL" FunctionName="SCMSModel.Store.PROC_GETNOOFMCMODEL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.PROC_GETNOOFMCMODEL_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="NO_OF_MC" ColumnName="NO_OF_MC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_GETNOOFMCMODELSTATUS" FunctionName="SCMSModel.Store.PROC_GETNOOFMCMODELSTATUS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.PROC_GETNOOFMCMODELSTATUS_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="NO_OF_MC" ColumnName="NO_OF_MC" />
+                <ScalarProperty Name="C_STATUS" ColumnName="C_STATUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_GETQTYDAILYHOUR" FunctionName="SCMSModel.Store.PROC_GETQTYDAILYHOUR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.PROC_GETQTYDAILYHOUR_Result">
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_GETQTYDAILYHOUR_SINGLE" FunctionName="SCMSModel.Store.PROC_GETQTYDAILYHOUR_SINGLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.PROC_GETQTYDAILYHOUR_SINGLE_Result">
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Machines" FunctionName="SCMSModel.Store.Proc_Machines">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_Machines_Result">
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Process_Name" ColumnName="Process_Name" />
+                <ScalarProperty Name="Machine_Name" ColumnName="Machine_Name" />
+                <ScalarProperty Name="Zone_Name" ColumnName="Zone_Name" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="Last_Update" ColumnName="Last_Update" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SCMSModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SCMSModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SCMSModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SCMSModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SCMSModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SCMSModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SCMSModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateMachine" FunctionName="SCMSModel.Store.UpdateMachine" />
+          <FunctionImportMapping FunctionImportName="Proc_FindAll_CM_Machine" FunctionName="SCMSModel.Store.Proc_FindAll_CM_Machine">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_FindAll_CM_Machine_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lineId" ColumnName="lineId" />
+                <ScalarProperty Name="socketId" ColumnName="socketId" />
+                <ScalarProperty Name="SOCKETQTY" ColumnName="SOCKETQTY" />
+                <ScalarProperty Name="MACHINE_SPEC" ColumnName="MACHINE_SPEC" />
+                <ScalarProperty Name="SCARA_YN" ColumnName="SCARA_YN" />
+                <ScalarProperty Name="portId" ColumnName="portId" />
+                <ScalarProperty Name="processId" ColumnName="processId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ip_equiment" ColumnName="ip_equiment" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="log_path" ColumnName="log_path" />
+                <ScalarProperty Name="log_path2" ColumnName="log_path2" />
+                <ScalarProperty Name="serial_machine" ColumnName="serial_machine" />
+                <ScalarProperty Name="pathdll" ColumnName="pathdll" />
+                <ScalarProperty Name="pathexe" ColumnName="pathexe" />
+                <ScalarProperty Name="pathremote" ColumnName="pathremote" />
+                <ScalarProperty Name="softwarename" ColumnName="softwarename" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_FindAll_CM_Line" FunctionName="SCMSModel.Store.Proc_FindAll_CM_Line">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_FindAll_CM_Line_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="zoneId" ColumnName="zoneId" />
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="line_group" ColumnName="line_group" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_FindAll_CM_Model" FunctionName="SCMSModel.Store.Proc_FindAll_CM_Model">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_FindAll_CM_Model_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="projectId" ColumnName="projectId" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_FindAll_CM_Process" FunctionName="SCMSModel.Store.Proc_FindAll_CM_Process">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_FindAll_CM_Process_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_FindAll_CM_Zone" FunctionName="SCMSModel.Store.Proc_FindAll_CM_Zone">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCMSModel.Proc_FindAll_CM_Zone_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Find_LineModel" FunctionName="SCMSModel.Store.Proc_Find_LineModel" />
+          <FunctionImportMapping FunctionImportName="Proc_Find_LineZone" FunctionName="SCMSModel.Store.Proc_Find_LineZone" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
