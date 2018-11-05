@@ -17,6 +17,7 @@ using System.Net;
 using SimpleTCP;
 using System.Net.Sockets;
 using System.Threading;
+using CommunicationTCP;
 
 namespace CameraSystem.Views
 {
@@ -49,9 +50,11 @@ namespace CameraSystem.Views
             styleManager.Style = Main.Instance.ManageStyle.Style;
         }
 
-        private void btnLoadAllMachine_Click(object sender, EventArgs e)
+        private async void btnLoadAllMachine_Click(object sender, EventArgs e)
         {
             waitForm.Show(main_parent);
+            TCPCom tCPCom = new TCPCom();
+            var a = await tCPCom.Send_GetMachineOnline();
             if (chbdatabase.Checked)
             {
                 try

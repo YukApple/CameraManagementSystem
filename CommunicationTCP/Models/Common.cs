@@ -13,7 +13,7 @@ namespace CommunicationTCP.Models
     }
     enum ModelMethod
     {
-
+        MachineOnlineModel
     }
     public class Common
     {

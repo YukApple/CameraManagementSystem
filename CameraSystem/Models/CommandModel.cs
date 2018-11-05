@@ -11,5 +11,6 @@ namespace CameraSystem.Models
         public string Command { get; set; }
         public string Model { get; set; }
         public string Data { get; set; }
+        public int DataLength { get; set; }
     }
 }

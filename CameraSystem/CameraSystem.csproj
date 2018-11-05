@@ -330,6 +330,10 @@
     <None Include="Resources\mail1.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommunicationTCP\CommunicationTCP.csproj">
+      <Project>{8286b606-bb55-479f-ac93-189519be3eb4}</Project>
+      <Name>CommunicationTCP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaitWnd\WaitWnd.csproj">
       <Project>{a36149b7-3811-451b-9097-74a66d255a5b}</Project>
       <Name>WaitWnd</Name>
