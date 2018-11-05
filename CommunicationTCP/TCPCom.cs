@@ -18,7 +18,7 @@ namespace CommunicationTCP
                 CommandModel cmd = new CommandModel();
                 using (SCMSEntities db = new SCMSEntities())
                 {
-                    List<Proc_Machines_Result> machines = db.Proc_Machines().ToList();
+                    var machines = db.Proc_Machines().ToList();
                     cmd.Command = CommandMethod.GET.ToString();
                     cmd.Model = ModelMethod.MachineOnlineModel.ToString();
                     cmd.Data = JsonConvert.SerializeObject(machines);
