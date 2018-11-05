@@ -313,249 +313,6 @@ namespace CameraSystem.Data.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETTOTALQTYINPUT", mODELIDParameter);
         }
     
-        public virtual ObjectResult<NumberOfMachine_QM_DualCal_Result> NumberOfMachine_QM_DualCal(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_DualCal_Result>("NumberOfMachine_QM_DualCal", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_DualCAL_Handler_Master(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_DualCAL_Handler_Master", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_DualCAL_Handler_Scara(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_DualCAL_Handler_Scara", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_DualCAL_Handler_Slave(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_DualCAL_Handler_Slave", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_50cm_Tele_Result> NumberOfMachine_QM_FT_50cm_Tele(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_50cm_Tele_Result>("NumberOfMachine_QM_FT_50cm_Tele", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_AF_Cal_Rangechecklog_Result> NumberOfMachine_QM_FT_AF_Cal_Rangechecklog(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_AF_Cal_Rangechecklog_Result>("NumberOfMachine_QM_FT_AF_Cal_Rangechecklog", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_FT_Handler_Master(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_FT_Handler_Master", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_FT_Handler_Scara(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_FT_Handler_Scara", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_FT_Handler_Slave(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_FT_Handler_Slave", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_Image_RGBLog_Tele_Result> NumberOfMachine_QM_FT_Image_RGBLog_Tele(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_Image_RGBLog_Tele_Result>("NumberOfMachine_QM_FT_Image_RGBLog_Tele", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_Image_RGBLog_Wide_Result> NumberOfMachine_QM_FT_Image_RGBLog_Wide(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_Image_RGBLog_Wide_Result>("NumberOfMachine_QM_FT_Image_RGBLog_Wide", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide_Result> NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide_Result>("NumberOfMachine_QM_FT_Image_Samsung_Vignettinglog_Wide", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_LongAF_Tele_Result> NumberOfMachine_QM_FT_LongAF_Tele(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_LongAF_Tele_Result>("NumberOfMachine_QM_FT_LongAF_Tele", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_LongAF_Wide_B_F15_Result> NumberOfMachine_QM_FT_LongAF_Wide_B_F15(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_LongAF_Wide_B_F15_Result>("NumberOfMachine_QM_FT_LongAF_Wide_B_F15", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_LongAF_Wide_B_F24_Result> NumberOfMachine_QM_FT_LongAF_Wide_B_F24(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_LongAF_Wide_B_F24_Result>("NumberOfMachine_QM_FT_LongAF_Wide_B_F24", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_FT_Marco_AF_Result> NumberOfMachine_QM_FT_Marco_AF(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_FT_Marco_AF_Result>("NumberOfMachine_QM_FT_Marco_AF", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_HORI_Handler_Master(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_HORI_Handler_Master", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_HORI_Handler_Slave(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_HORI_Handler_Slave", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_Ois_Result> NumberOfMachine_QM_Ois(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_Ois_Result>("NumberOfMachine_QM_Ois", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_PAF_AE_Cal_Ratio_Result> NumberOfMachine_QM_PAF_AE_Cal_Ratio(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_PAF_AE_Cal_Ratio_Result>("NumberOfMachine_QM_PAF_AE_Cal_Ratio", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_PAF_Hander_Scara(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_PAF_Hander_Scara", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_PAF_Handler_Master(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_PAF_Handler_Master", dateParameter);
-        }
-    
-        public virtual int NumberOfMachine_QM_PAF_Handler_Slave(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NumberOfMachine_QM_PAF_Handler_Slave", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_PAF_Tele_AE_Cal_Check_Result> NumberOfMachine_QM_PAF_Tele_AE_Cal_Check(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_PAF_Tele_AE_Cal_Check_Result>("NumberOfMachine_QM_PAF_Tele_AE_Cal_Check", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_PAF_Tele_AFcode_Compare_Result> NumberOfMachine_QM_PAF_Tele_AFcode_Compare(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_PAF_Tele_AFcode_Compare_Result>("NumberOfMachine_QM_PAF_Tele_AFcode_Compare", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm_Result> NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm_Result>("NumberOfMachine_QM_PAF_Tele_Pan_AF_100cm", dateParameter);
-        }
-    
-        public virtual ObjectResult<NumberOfMachine_QM_PAF_Wide_AFcode_Compare_Result> NumberOfMachine_QM_PAF_Wide_AFcode_Compare(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NumberOfMachine_QM_PAF_Wide_AFcode_Compare_Result>("NumberOfMachine_QM_PAF_Wide_AFcode_Compare", dateParameter);
-        }
-    
         public virtual int Proc_Create_CM_Account(string gEN, string fullname, string pass, string email)
         {
             var gENParameter = gEN != null ?
@@ -586,7 +343,50 @@ namespace CameraSystem.Data.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_Find_CM_Account_Result>("Proc_Find_CM_Account", gENParameter);
         }
     
-        public virtual int Proc_FindUser_CM_Account(string username, string pass)
+        public virtual ObjectResult<string> Proc_Find_LineModel(string model)
+        {
+            var modelParameter = model != null ?
+                new ObjectParameter("model", model) :
+                new ObjectParameter("model", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Proc_Find_LineModel", modelParameter);
+        }
+    
+        public virtual ObjectResult<string> Proc_Find_LineZone(string zone)
+        {
+            var zoneParameter = zone != null ?
+                new ObjectParameter("zone", zone) :
+                new ObjectParameter("zone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Proc_Find_LineZone", zoneParameter);
+        }
+    
+        public virtual ObjectResult<Proc_FindAll_CM_Line_Result> Proc_FindAll_CM_Line()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Line_Result>("Proc_FindAll_CM_Line");
+        }
+    
+        public virtual ObjectResult<Proc_FindAll_CM_Machine_Result> Proc_FindAll_CM_Machine()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Machine_Result>("Proc_FindAll_CM_Machine");
+        }
+    
+        public virtual ObjectResult<Proc_FindAll_CM_Model_Result> Proc_FindAll_CM_Model()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Model_Result>("Proc_FindAll_CM_Model");
+        }
+    
+        public virtual ObjectResult<Proc_FindAll_CM_Process_Result> Proc_FindAll_CM_Process()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Process_Result>("Proc_FindAll_CM_Process");
+        }
+    
+        public virtual ObjectResult<Proc_FindAll_CM_Zone_Result> Proc_FindAll_CM_Zone()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Zone_Result>("Proc_FindAll_CM_Zone");
+        }
+    
+        public virtual ObjectResult<Proc_FindUser_CM_Account_Result> Proc_FindUser_CM_Account(string username, string pass)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
@@ -596,7 +396,7 @@ namespace CameraSystem.Data.Models
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_FindUser_CM_Account", usernameParameter, passParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindUser_CM_Account_Result>("Proc_FindUser_CM_Account", usernameParameter, passParameter);
         }
     
         public virtual ObjectResult<PROC_GETNOOFMCMODEL_Result> PROC_GETNOOFMCMODEL()
@@ -746,49 +546,6 @@ namespace CameraSystem.Data.Models
                 new ObjectParameter("status", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateMachine", ipParameter, statusParameter);
-        }
-    
-        public virtual ObjectResult<Proc_FindAll_CM_Machine_Result> Proc_FindAll_CM_Machine()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Machine_Result>("Proc_FindAll_CM_Machine");
-        }
-    
-        public virtual ObjectResult<Proc_FindAll_CM_Line_Result> Proc_FindAll_CM_Line()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Line_Result>("Proc_FindAll_CM_Line");
-        }
-    
-        public virtual ObjectResult<Proc_FindAll_CM_Model_Result> Proc_FindAll_CM_Model()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Model_Result>("Proc_FindAll_CM_Model");
-        }
-    
-        public virtual ObjectResult<Proc_FindAll_CM_Process_Result> Proc_FindAll_CM_Process()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Process_Result>("Proc_FindAll_CM_Process");
-        }
-    
-        public virtual ObjectResult<Proc_FindAll_CM_Zone_Result> Proc_FindAll_CM_Zone()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_FindAll_CM_Zone_Result>("Proc_FindAll_CM_Zone");
-        }
-    
-        public virtual ObjectResult<string> Proc_Find_LineModel(string model)
-        {
-            var modelParameter = model != null ?
-                new ObjectParameter("model", model) :
-                new ObjectParameter("model", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Proc_Find_LineModel", modelParameter);
-        }
-    
-        public virtual ObjectResult<string> Proc_Find_LineZone(string zone)
-        {
-            var zoneParameter = zone != null ?
-                new ObjectParameter("zone", zone) :
-                new ObjectParameter("zone", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Proc_Find_LineZone", zoneParameter);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace CameraSystem.Views
 
         private void URegister_Load(object sender, EventArgs e)
         {
-             
+            txtUsername.Focus();
         }
 
         private void onCancel_Click(object sender, EventArgs e)

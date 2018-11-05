@@ -37,7 +37,7 @@
             this.btnRegister = new MetroFramework.Controls.MetroButton();
             this.txtPassword = new MetroFramework.Controls.MetroTextBox();
             this.btnLogin = new MetroFramework.Controls.MetroButton();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.chkmemo = new MetroFramework.Controls.MetroCheckBox();
             this.metroPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -81,7 +81,7 @@
             this.metroPanel2.Controls.Add(this.btnRegister);
             this.metroPanel2.Controls.Add(this.txtPassword);
             this.metroPanel2.Controls.Add(this.btnLogin);
-            this.metroPanel2.Controls.Add(this.metroCheckBox1);
+            this.metroPanel2.Controls.Add(this.chkmemo);
             this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
@@ -152,7 +152,7 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(277, 33);
             this.btnRegister.TabIndex = 5;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "&Register";
             this.btnRegister.UseSelectable = true;
             this.btnRegister.Click += new System.EventHandler(this.onRegister_Click);
             // 
@@ -200,20 +200,20 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(277, 33);
             this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "&Login";
             this.btnLogin.UseSelectable = true;
             this.btnLogin.Click += new System.EventHandler(this.onLogin_Click);
             // 
-            // metroCheckBox1
+            // chkmemo
             // 
-            this.metroCheckBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(3, 180);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(101, 15);
-            this.metroCheckBox1.TabIndex = 3;
-            this.metroCheckBox1.Text = "Remember Me";
-            this.metroCheckBox1.UseSelectable = true;
+            this.chkmemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkmemo.AutoSize = true;
+            this.chkmemo.Location = new System.Drawing.Point(3, 180);
+            this.chkmemo.Name = "chkmemo";
+            this.chkmemo.Size = new System.Drawing.Size(107, 15);
+            this.chkmemo.TabIndex = 3;
+            this.chkmemo.Text = "User Remember";
+            this.chkmemo.UseSelectable = true;
             // 
             // ULogin
             // 
@@ -236,7 +236,7 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox txtPassword;
         private MetroFramework.Controls.MetroTextBox txtUsername;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox chkmemo;
         private MetroFramework.Controls.MetroButton btnRegister;
         private MetroFramework.Controls.MetroButton btnLogin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

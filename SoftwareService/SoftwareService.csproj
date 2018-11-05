@@ -61,7 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandModel.cs" />
+    <Compile Include="Models\CommandModel.cs" />
+    <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\MachineOnlineModel.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

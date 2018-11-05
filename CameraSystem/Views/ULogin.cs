@@ -40,45 +40,81 @@ namespace CameraSystem.Views
 
         private void ULogin_Load(object sender, EventArgs e)
         {
-            
+            txtUsername.Focus();
+            if (Helpers.isExistsSetting("remembercheck"))
+            {
+                var ischeck = Helpers.GetSetting("remembercheck");
+                if(ischeck == "1")
+                {
+                    txtUsername.Text = Helpers.GetSetting("username");
+                    chkmemo.Checked = true;
+                }
+                    
+            }
         }
 
         private void onLogin_Click(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
-            //{
-            //    MetroFramework.MetroMessageBox.Show(this, "Please input password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
-            //{
-            //    MetroFramework.MetroMessageBox.Show(this, "Please input Username", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //try
-            //{
-            //    using (var db = new SCMSEntities())
-            //    {
-            //        var passmd5 = Helpers.ToMD5(txtPassword.Text.Trim());
-            //        var user_valid = db.Proc_FindUser_CM_Account(txtUsername.Text.Trim(), passmd5);
-            //        if(user_valid != null)
-            //        {
+            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Please input password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Please input Username", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                using (var db = new SCMSEntities())
+                {
+                    var passmd5 = Helpers.ToMD5(txtPassword.Text.Trim());
+                    var user_valid = db.Proc_FindUser_CM_Account(txtUsername.Text.Trim(), passmd5).ToList();
+                    if (user_valid.Count > 0)
+                    {
+                        if(chkmemo.Checked)
+                        {
+                            if(Helpers.isExistsSetting("remembercheck"))
+                            {
+                                Helpers.SetSetting("remembercheck", "1");
+                                Helpers.SetSetting("username", txtUsername.Text.Trim());
+                            }
+                            else
+                            {
+                                Helpers.AddSetting("remembercheck", "1");
+                                Helpers.AddSetting("username", txtUsername.Text.Trim());
+                            }
+                        }
+                        else
+                        {
+                            if (Helpers.isExistsSetting("remembercheck"))
+                            {
+                                Helpers.SetSetting("remembercheck", "0");
+                                Helpers.SetSetting("username", txtUsername.Text.Trim());
+                            }
+                            else
+                            {
+                                Helpers.AddSetting("remembercheck", "0");
+                                Helpers.AddSetting("username", txtUsername.Text.Trim());
+                            }
+                        }
                         UDashboard dashboard = new UDashboard();
                         dashboard.Dock = DockStyle.Fill;
                         Main.Instance.MetroContainer.Controls.Clear();
                         Main.Instance.MetroContainer.Controls.Add(dashboard);
-            //        }
-            //        else
-            //        {
-            //            MetroFramework.MetroMessageBox.Show(this, "Please check user or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //            Clear_Input();
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    MetroFramework.MetroMessageBox.Show(this, "Please check connect to server", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                    }
+                    else
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Please check user or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Clear_Input();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Please check connect to server", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
         }
 

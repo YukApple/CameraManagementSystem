@@ -30,11 +30,15 @@ namespace CameraSystem.Views
         private bool loaded = false;
         WaitWndFun waitForm = new WaitWndFun();
         Main main_parent = Main.Instance;
+        SimpleTcpClient client = null;
+
         public UDllUpdate()
         {
             InitializeComponent();
             SetTheme();
         }
+
+
 
         private void SetTheme()
         {
@@ -123,22 +127,28 @@ namespace CameraSystem.Views
                 if (chkconnected.Checked)
                 {
                     List<Proc_Machines_Result> mcs = new List<Proc_Machines_Result>();
+                    List<MachineOnlineModel> mcOn = new List<MachineOnlineModel>();
                     foreach (var mc in mcfilter)
                     {
-                        try
-                        {
-                            var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
-                            mcs.Add(mc);
+                        MachineOnlineModel mcO = new MachineOnlineModel();
+                        mcO.IP = mc.IP.Trim();
+                        mcOn.Add(mcO);
+                        //try
+                        //{
+                        //    var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
+                        //    mcs.Add(mc);
                             
-                        }
-                        catch (Exception ex)
-                        {
-                            //MetroFramework.MetroMessageBox.Show(this, "Please check connect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            continue;
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    //MetroFramework.MetroMessageBox.Show(this, "Please check connect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    continue;
+                        //}
                         
                     }
                     procMachinesResultBindingSource.DataSource = mcs;
+                    var sendcmd = Helpers.SendCommand(mcOn, Helpers.CommandMethod.GET, "MachineOnlineModel");
+                    client.WriteLine(sendcmd);
                 }
                 else
                 {
@@ -147,6 +157,15 @@ namespace CameraSystem.Views
                 
             }
             waitForm.Close();
+        }
+
+        // Ham nhan tat ca moi thu phan hoi ve
+        private void Client_DataReceived(object sender, SimpleTCP.Message e)
+        {
+            MessageBox.Show(e.MessageString);
+            client.Disconnect();
+            client.Dispose();
+            
         }
 
         private void eIndexChanged(object sender, EventArgs e)
@@ -352,12 +371,12 @@ namespace CameraSystem.Views
 
         private void dgvmachines_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblIndexMC.Text = dgvmachines.CurrentRow.Index.ToString();
+            lblIndexMC.Text = (dgvmachines.CurrentRow.Index+1).ToString();
         }
 
         private void dgvmcselected_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblIndexSlMC.Text = dgvmcselected.CurrentRow.Index.ToString();
+            lblIndexSlMC.Text = (dgvmcselected.CurrentRow.Index+1).ToString();
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -431,7 +450,7 @@ namespace CameraSystem.Views
 
         private void dgvFiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblIndexFile.Text = dgvFiles.CurrentRow.Index.ToString();
+            lblIndexFile.Text = (dgvFiles.CurrentRow.Index+1).ToString();
         }
 
         private bool FtpUploadFile(string path,string uri,string username,string password)

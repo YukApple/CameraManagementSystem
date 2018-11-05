@@ -12,18 +12,12 @@ using System.Timers;
 using SimpleTCP;
 using System.IO;
 using Newtonsoft.Json;
+using CameraSystem.Models;
 
 namespace SoftwareService
 {
     public partial class Service1 : ServiceBase
     {
-        private Timer timer = null;
-        private string[] _applications = new string[] { "GetDataAgent"};
-        private List<AppStatus> _appstatuslist = new List<AppStatus>{ new AppStatus { AppName = "GetDataAgent" } };
-
-        private string pathorigin = @"C:\Program Files (x86)\AutomationSVCC";
-        private bool isSetting = false;
-        private bool isWriting = false;
         SimpleTcpServer server = null;
         public Service1()
         {
@@ -32,131 +26,89 @@ namespace SoftwareService
 
         protected override void OnStart(string[] args)
         {
-            // Tạo 1 timer từ libary System.Timers
-            timer = new Timer();
-            // Execute mỗi 60s
-            timer.Interval = 1000;
-            // Những gì xảy ra khi timer đó dc tick
-            timer.Elapsed += timer_Tick;
-            // Enable timer
-            timer.Enabled = true;
-            timer.Start();
             Utilities.WriteLog("Start Timer");
             // Ghi vào log file khi services dc start lần đầu tiên
             Utilities.WriteLog("Start theo dõi phần mềm");
-            SystemEvents.SessionEnding += SystemEvents_SessionEnding;
             server = new SimpleTcpServer();
             try
             {
-                server.Start(4444);
+                server.Start(8080);
                 server.DataReceived += Server_DataReceived;
-                Utilities.WriteLog("Start listen port 4444");
+                Utilities.WriteLog("Start listen port 8080");
             }
             catch (Exception)
             {
-                Utilities.WriteLog("Cannot start listen port 4444");
+                Utilities.WriteLog("Cannot start listen port 8080");
             }
         }
 
-
-        /*
-         - CHANGEPATH: Thay doi path scan tim phan mem
-         - SETSETTING: Thay doi phan mem can theo doi
-         - GETSTATUS: Get tat ca cac phan mem trong list
-         - RUNALL: Run tat ca cac phan mem co trong list theo doi
-        */
         private void Server_DataReceived(object sender, Message e)
         {
-            var strdatareceive = Encoding.UTF8.GetString(e.Data);
-            _applications = strdatareceive.Split('-');
-            switch (_applications[0].ToUpper())
+            var jmessage = e.MessageString;
+            Utilities.WriteLog(jmessage);
+            var message = JsonConvert.DeserializeObject<CommandModel>(jmessage);
+            switch (message.Command)
             {
-                case "CHANGEPATH":
-                    pathorigin = _applications[1];
-                    e.ReplyLine("CHANGEPATH DONE");
-                    Utilities.WriteLog("Change path scan done!");
+                case "GET":
+                    e.ReplyLine(message.Data);
                     break;
-                case "SETSETTING":
-                    Utilities.WriteLog("Setting parameter");
-                    isSetting = true;
-                    while (isWriting) ;
-                    if (_applications.Length > 1)
-                    {
-                        _appstatuslist.Clear();
-                        for (int i = 1; i < _applications.Length; i++)
-                        {
-                            AppStatus app = new AppStatus();
-                            app.AppName = _applications[i];
-                            app.IsRunning = false;
-                            _appstatuslist.Add(app);
-                        }
-                    }
-                    isSetting = false;
-                    e.ReplyLine("SETTING DONE");
-                    Utilities.WriteLog("Setting done!");
-                    break;
-                case "GETSTATUS":
-                    e.ReplyLine(JsonConvert.SerializeObject(_appstatuslist));
-                    Utilities.WriteLog("Get done!");
-                    break;
-                case "RUNALL":
-                    string[] allfile = Directory.GetFiles(pathorigin, "*.exe", SearchOption.AllDirectories);
-                    foreach (var item in allfile)
-                    {
-                        FileInfo file = new FileInfo(item);
-                        var existsfile = _appstatuslist.Exists(a => a.AppName == file.Name);
-                        if(existsfile)
-                        {
-                            StartApp(file.DirectoryName,file.Name);
-                        }
-                    }
-                    e.ReplyLine("RUNALL DONE");
-                    Utilities.WriteLog("Start all done!");
+                case "SET":
+                    SetDataExecute();
                     break;
                 default:
                     break;
             }
-            Utilities.WriteLog("Client send : " + e.TcpClient.Client.RemoteEndPoint.ToString());
-            Utilities.WriteLog("Data setting receive: " + strdatareceive);
-            
         }
 
-        private void SystemEvents_SessionEnding(object sender, SessionEndingEventArgs e)
+        private void SetDataExecute()
         {
-            if (server.IsStarted)
-                server.Stop();
-            Utilities.WriteLog("Shutdown computer");
-            e.Cancel = true;
+            throw new NotImplementedException();
         }
 
-        private void timer_Tick(object sender, ElapsedEventArgs e)
+        private List<T> GetDataExecute<T>(string data,string model)
         {
-            // Xử lý một vài logic ở đây
-            if(_applications.Length > 0)
+            List<T> result = null;
+            switch (model)
             {
-                isWriting = true;
-                foreach (var item in _appstatuslist)
-                {
-                    if(IsProcessOpen(item.AppName))
-                    {
-                        item.IsRunning = true;
-                    }
-                    else
-                    {
-                        item.IsRunning = false;
-                    }
-                }
+                case "MachineOnlineModel":
+                    result = JsonConvert.DeserializeObject<List<T>>(data);
+                    break;
+                default:
+                    break;
             }
-            isWriting = false;
+            return result;
+        }
+
+        private async Task<List<MachineOnlineModel>> GetMachineStatus(List<MachineOnlineModel> listMC)
+        {
+            List<MachineOnlineModel> list = new List<MachineOnlineModel>();
+            return await Task.Factory.StartNew(() =>
+            {
+                foreach (var mc in listMC)
+                {
+                    MachineOnlineModel _mc = new MachineOnlineModel();
+                    try
+                    {
+                        using (SimpleTcpClient client = new SimpleTcpClient())
+                        {
+                            client.Connect(mc.IP, 1000);
+                            _mc.IP = mc.IP;
+                            _mc.isOnline = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        _mc.IP = mc.IP;
+                        _mc.isOnline = false;
+                    }
+                    list.Add(_mc);
+                }
+                return list;
+            });
         }
 
         protected override void OnStop()
         {
-            // Ghi log lại khi Services đã được stop
-            if (server.IsStarted)
-                server.Stop();
-            timer.Stop();
-            timer.Enabled = false;
             Utilities.WriteLog("WindowsService has been stop");
         }
 
@@ -177,11 +129,5 @@ namespace SoftwareService
                 Process.Start(Path.Combine(path, name));
         }
 
-    }
-
-    public class AppStatus
-    {
-        public string AppName { get; set; }
-        public bool IsRunning { get; set; } = false;
     }
 }

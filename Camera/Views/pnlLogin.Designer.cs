@@ -128,7 +128,7 @@
             this.mrbLight.AutoSize = true;
             this.mrbLight.Checked = true;
             this.mrbLight.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.mrbLight.Location = new System.Drawing.Point(72, 33);
+            this.mrbLight.Location = new System.Drawing.Point(97, 33);
             this.mrbLight.Name = "mrbLight";
             this.mrbLight.Size = new System.Drawing.Size(56, 19);
             this.mrbLight.TabIndex = 6;

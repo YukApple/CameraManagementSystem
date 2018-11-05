@@ -17,6 +17,7 @@ namespace CameraSystem.Data.Models
         public Nullable<int> modelId { get; set; }
         public string line { get; set; }
         public string machine_id { get; set; }
+        public string type { get; set; }
         public string socket { get; set; }
         public string result { get; set; }
         public Nullable<System.DateTime> date { get; set; }
