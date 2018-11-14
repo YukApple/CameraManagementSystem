@@ -1,0 +1,159 @@
+﻿@model IEnumerable<API.Models.CM_Machine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lineId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.socketId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOCKETQTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MACHINE_SPEC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SCARA_YN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.portId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.processId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ip_equiment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.update_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.log_path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.log_path2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serial_machine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pathdll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pathexe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pathremote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.softwarename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dllupdaterequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.getfolderrequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serverFTP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lineId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.socketId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOCKETQTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MACHINE_SPEC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SCARA_YN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.portId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.processId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ip_equiment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.update_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.log_path)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.log_path2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serial_machine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pathdll)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pathexe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pathremote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.softwarename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dllupdaterequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.getfolderrequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serverFTP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

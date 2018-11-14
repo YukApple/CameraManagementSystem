@@ -244,6 +244,7 @@
     <Compile Include="Views\URegister.Designer.cs">
       <DependentUpon>URegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="WebRequest.cs" />
     <EmbeddedResource Include="frmRunning.resx">
       <DependentUpon>frmRunning.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +341,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\back2.png" />
+    <None Include="Resources\GLOBES_RED.png" />
+    <None Include="Resources\GLOBES_GREEN.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data\Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -350,9 +356,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\back2.png" />
-    <None Include="Resources\GLOBES_RED.png" />
-    <None Include="Resources\GLOBES_GREEN.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

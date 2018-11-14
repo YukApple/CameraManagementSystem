@@ -99,7 +99,7 @@ namespace CameraSystem.Views
                                 Helpers.AddSetting("username", txtUsername.Text.Trim());
                             }
                         }
-                        UDashboard dashboard = new UDashboard();
+                        UDllUpdate dashboard = new UDllUpdate();
                         dashboard.Dock = DockStyle.Fill;
                         Main.Instance.MetroContainer.Controls.Clear();
                         Main.Instance.MetroContainer.Controls.Add(dashboard);

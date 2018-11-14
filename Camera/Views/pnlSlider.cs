@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Transitions;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
 
@@ -68,29 +67,29 @@ namespace CameraSystem.Views
 
         public void swipe(bool show = true)
         {
-            this.Visible = true;
-            Transition _transasition = new Transitions.Transition(new TransitionType_EaseInEaseOut(500));
-            _transasition.add(this, "Left", show ? 0 : this.Width);
-            _transasition.run();
+            //this.Visible = true;
+            //Transition _transasition = new Transitions.Transition(new TransitionType_EaseInEaseOut(500));
+            //_transasition.add(this, "Left", show ? 0 : this.Width);
+            //_transasition.run();
 
-            while (this.Left != (show ? 0 : this.Width))
-            {
-                Application.DoEvents();
-            }
+            //while (this.Left != (show ? 0 : this.Width))
+            //{
+            //    Application.DoEvents();
+            //}
 
-            if (!show)
-            {
-                closed(new EventArgs());
-                _owner.Resize -= owner_Resize;
-                _owner.Controls.Remove(this);
-                this.Dispose();
-            }
-            else
-            {
-                _loaded = true;
-                ResizeForm();
-                shown(new EventArgs());
-            }
+            //if (!show)
+            //{
+            //    closed(new EventArgs());
+            //    _owner.Resize -= owner_Resize;
+            //    _owner.Controls.Remove(this);
+            //    this.Dispose();
+            //}
+            //else
+            //{
+            //    _loaded = true;
+            //    ResizeForm();
+            //    shown(new EventArgs());
+            //}
         }
     }
 }

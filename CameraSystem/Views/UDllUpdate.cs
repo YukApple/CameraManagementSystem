@@ -37,6 +37,7 @@ namespace CameraSystem.Views
         {
             InitializeComponent();
             SetTheme();
+
         }
 
 
@@ -50,11 +51,9 @@ namespace CameraSystem.Views
             styleManager.Style = Main.Instance.ManageStyle.Style;
         }
 
-        private async void btnLoadAllMachine_Click(object sender, EventArgs e)
+        private  void btnLoadAllMachine_Click(object sender, EventArgs e)
         {
             waitForm.Show(main_parent);
-            TCPCom tCPCom = new TCPCom();
-            var a = await tCPCom.Send_GetMachineOnline();
             if (chbdatabase.Checked)
             {
                 try
@@ -74,10 +73,10 @@ namespace CameraSystem.Views
                         lblquantitymc.Text = machines.Count.ToString();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-                    MetroFramework.MetroMessageBox.Show(this, "You have an error", "Information");
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Information");
                 }
             }
             waitForm.Close();
@@ -126,7 +125,7 @@ namespace CameraSystem.Views
             waitForm.Show(main_parent);
             using (var db = new SCMSEntities())
             {
-                var mcfilter = machines.Where(m => m.Zone_Name == cbbZone.Text && m.Model_Name == cbbModel.Text && m.Line == Convert.ToInt32(cbbLine.Text) && m.Process_Name == cbbProcess.Text).ToList();
+                var mcfilter = machines.Where(m => m.Zone_Name == cbbZone.Text && m.Model_Name == cbbModel.Text && m.Line == cbbLine.Text && m.Process_Name == cbbProcess.Text).ToList();
                 if (chkconnected.Checked)
                 {
                     List<Proc_Machines_Result> mcs = new List<Proc_Machines_Result>();
@@ -136,22 +135,22 @@ namespace CameraSystem.Views
                         MachineOnlineModel mcO = new MachineOnlineModel();
                         mcO.IP = mc.IP.Trim();
                         mcOn.Add(mcO);
-                        //try
-                        //{
-                        //    var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
-                        //    mcs.Add(mc);
-                            
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    //MetroFramework.MetroMessageBox.Show(this, "Please check connect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    continue;
-                        //}
-                        
+                        try
+                        {
+                            var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
+                            mcs.Add(mc);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            //MetroFramework.MetroMessageBox.Show(this, "Please check connect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            continue;
+                        }
+
                     }
                     procMachinesResultBindingSource.DataSource = mcs;
-                    var sendcmd = Helpers.SendCommand(mcOn, Helpers.CommandMethod.GET, "MachineOnlineModel");
-                    client.WriteLine(sendcmd);
+                    //var sendcmd = Helpers.SendCommand(mcOn, Helpers.CommandMethod.GET, "MachineOnlineModel");
+                    //client.WriteLine(sendcmd);
                 }
                 else
                 {
@@ -394,12 +393,18 @@ namespace CameraSystem.Views
             }
             var count = procMachinesResultBindingSource1.List.Count;
             lblcurrentupdate.Text = string.Format("{0}/{1}", 0, count);
+            var temp = (int)(100 / count);
+            int progresvalue = 0;
             foreach (Proc_Machines_Result mc in procMachinesResultBindingSource1.List)
             {
 
                 //var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
                 //client.StringEncoder = ASCIIEncoding.ASCII;
                 //client.WriteLine("CMD_UPDATE_DLL");
+                progresvalue += temp;
+                if (progresvalue > 100)
+                    progresvalue = 100;
+                mprogress.Value = progresvalue;
                 try
                 {
                     //var success = machine.mc_tcpClient.ConnectAsync(machine.mc_ip, port).Wait(10);
@@ -409,7 +414,6 @@ namespace CameraSystem.Views
                     if (!success)
                     {
                         throw new Exception("fail to connect");
-
                     }
                     else
                     {
@@ -431,8 +435,10 @@ namespace CameraSystem.Views
                     MetroFramework.MetroMessageBox.Show(this, "Cannot send command " + mc.IP);
                 }
                 count += 1;
-                lblcurrentupdate.Text = string.Format("{0}/{1}", count, procMachinesResultBindingSource1.List.Count);
+                procMachinesResultBindingSource1.List.Remove(mc);
+                lblcurrentupdate.Text = string.Format("{0}/{1}", procMachinesResultBindingSource1.List.Count, count);
             }
+            MetroFramework.MetroMessageBox.Show(this, "Update Done");
         }
 
         private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -458,25 +464,25 @@ namespace CameraSystem.Views
 
         private bool FtpUploadFile(string path,string uri,string username,string password)
         {
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri);
-            request.Method = WebRequestMethods.Ftp.UploadFile;
-            request.Credentials = new NetworkCredential(username, password);
-            byte[] bytes = File.ReadAllBytes(path);
-            request.ContentLength = bytes.Length;
-            try
-            {
-                using (Stream request_stream = request.GetRequestStream())
-                {
-                    request_stream.Write(bytes, 0, bytes.Length);
-                    request_stream.Close();
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
+            //FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri);
+            //request.Method = WebRequestMethods.Ftp.UploadFile;
+            //request.Credentials = new NetworkCredential(username, password);
+            //byte[] bytes = File.ReadAllBytes(path);
+            //request.ContentLength = bytes.Length;
+            //try
+            //{
+            //    using (Stream request_stream = request.GetRequestStream())
+            //    {
+            //        request_stream.Write(bytes, 0, bytes.Length);
+            //        request_stream.Close();
+            //        return true;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    return false;
+            //}
+            return false;
         }
 
     }

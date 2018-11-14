@@ -18,7 +18,7 @@ namespace CameraSystem.Data.Models
         public string Machine_Name { get; set; }
         public string Zone_Name { get; set; }
         public string Model_Name { get; set; }
-        public Nullable<int> Line { get; set; }
+        public string Line { get; set; }
         public Nullable<System.DateTime> Last_Update { get; set; }
     }
 }

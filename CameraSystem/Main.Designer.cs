@@ -35,6 +35,12 @@
             this.mpnlSetting = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnSaveIpServer = new MetroFramework.Controls.MetroButton();
+            this.btnCheckServerConnect = new MetroFramework.Controls.MetroButton();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.txtPortServer = new MetroFramework.Controls.MetroTextBox();
+            this.txtIpServer = new MetroFramework.Controls.MetroTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.flColor = new System.Windows.Forms.FlowLayoutPanel();
@@ -48,20 +54,14 @@
             this.btnLogout = new MetroFramework.Controls.MetroLink();
             this.btnSetting = new MetroFramework.Controls.MetroLink();
             this.btnClose = new MetroFramework.Controls.MetroLink();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.txtIpServer = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.btnCheckServerConnect = new MetroFramework.Controls.MetroButton();
-            this.btnSaveIpServer = new MetroFramework.Controls.MetroButton();
-            this.txtPortServer = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.mpnlSetting.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pconnect)).BeginInit();
-            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -138,6 +138,122 @@
             this.tabPage1.Size = new System.Drawing.Size(278, 602);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Server";
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.btnSaveIpServer);
+            this.metroPanel1.Controls.Add(this.btnCheckServerConnect);
+            this.metroPanel1.Controls.Add(this.metroLabel1);
+            this.metroPanel1.Controls.Add(this.txtPortServer);
+            this.metroPanel1.Controls.Add(this.txtIpServer);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(278, 602);
+            this.metroPanel1.TabIndex = 0;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // btnSaveIpServer
+            // 
+            this.btnSaveIpServer.Location = new System.Drawing.Point(161, 141);
+            this.btnSaveIpServer.Name = "btnSaveIpServer";
+            this.btnSaveIpServer.Size = new System.Drawing.Size(101, 34);
+            this.btnSaveIpServer.TabIndex = 4;
+            this.btnSaveIpServer.Text = "Save";
+            this.btnSaveIpServer.UseSelectable = true;
+            this.btnSaveIpServer.Click += new System.EventHandler(this.btnSaveIpServer_Click);
+            // 
+            // btnCheckServerConnect
+            // 
+            this.btnCheckServerConnect.Location = new System.Drawing.Point(13, 141);
+            this.btnCheckServerConnect.Name = "btnCheckServerConnect";
+            this.btnCheckServerConnect.Size = new System.Drawing.Size(101, 34);
+            this.btnCheckServerConnect.TabIndex = 4;
+            this.btnCheckServerConnect.Text = "Test Connection";
+            this.btnCheckServerConnect.UseSelectable = true;
+            this.btnCheckServerConnect.Click += new System.EventHandler(this.btnCheckServerConnect_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.Location = new System.Drawing.Point(5, 17);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(131, 25);
+            this.metroLabel1.TabIndex = 3;
+            this.metroLabel1.Text = "Server Connect:";
+            // 
+            // txtPortServer
+            // 
+            this.txtPortServer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            // 
+            // 
+            // 
+            this.txtPortServer.CustomButton.Image = null;
+            this.txtPortServer.CustomButton.Location = new System.Drawing.Point(227, 1);
+            this.txtPortServer.CustomButton.Name = "";
+            this.txtPortServer.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPortServer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPortServer.CustomButton.TabIndex = 1;
+            this.txtPortServer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPortServer.CustomButton.UseSelectable = true;
+            this.txtPortServer.CustomButton.Visible = false;
+            this.txtPortServer.Lines = new string[0];
+            this.txtPortServer.Location = new System.Drawing.Point(13, 99);
+            this.txtPortServer.MaxLength = 32767;
+            this.txtPortServer.Name = "txtPortServer";
+            this.txtPortServer.PasswordChar = '\0';
+            this.txtPortServer.PromptText = "Port Input";
+            this.txtPortServer.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPortServer.SelectedText = "";
+            this.txtPortServer.SelectionLength = 0;
+            this.txtPortServer.SelectionStart = 0;
+            this.txtPortServer.ShortcutsEnabled = true;
+            this.txtPortServer.Size = new System.Drawing.Size(249, 23);
+            this.txtPortServer.TabIndex = 2;
+            this.txtPortServer.UseSelectable = true;
+            this.txtPortServer.WaterMark = "Port Input";
+            this.txtPortServer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPortServer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtIpServer
+            // 
+            this.txtIpServer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            // 
+            // 
+            // 
+            this.txtIpServer.CustomButton.Image = null;
+            this.txtIpServer.CustomButton.Location = new System.Drawing.Point(227, 1);
+            this.txtIpServer.CustomButton.Name = "";
+            this.txtIpServer.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtIpServer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtIpServer.CustomButton.TabIndex = 1;
+            this.txtIpServer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtIpServer.CustomButton.UseSelectable = true;
+            this.txtIpServer.CustomButton.Visible = false;
+            this.txtIpServer.Lines = new string[0];
+            this.txtIpServer.Location = new System.Drawing.Point(13, 56);
+            this.txtIpServer.MaxLength = 32767;
+            this.txtIpServer.Name = "txtIpServer";
+            this.txtIpServer.PasswordChar = '\0';
+            this.txtIpServer.PromptText = "Server Input";
+            this.txtIpServer.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtIpServer.SelectedText = "";
+            this.txtIpServer.SelectionLength = 0;
+            this.txtIpServer.SelectionStart = 0;
+            this.txtIpServer.ShortcutsEnabled = true;
+            this.txtIpServer.Size = new System.Drawing.Size(249, 23);
+            this.txtIpServer.TabIndex = 2;
+            this.txtIpServer.UseSelectable = true;
+            this.txtIpServer.WaterMark = "Server Input";
+            this.txtIpServer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtIpServer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // tabPage2
             // 
@@ -257,6 +373,7 @@
             // 
             // pconnect
             // 
+            this.pconnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pconnect.Image = global::CameraSystem.Properties.Resources.GLOBES_RED;
             this.pconnect.Location = new System.Drawing.Point(1146, 9);
             this.pconnect.Name = "pconnect";
@@ -309,122 +426,6 @@
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             // 
-            // metroPanel1
-            // 
-            this.metroPanel1.Controls.Add(this.btnSaveIpServer);
-            this.metroPanel1.Controls.Add(this.btnCheckServerConnect);
-            this.metroPanel1.Controls.Add(this.metroLabel1);
-            this.metroPanel1.Controls.Add(this.txtPortServer);
-            this.metroPanel1.Controls.Add(this.txtIpServer);
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(278, 602);
-            this.metroPanel1.TabIndex = 0;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // txtIpServer
-            // 
-            this.txtIpServer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            // 
-            // 
-            // 
-            this.txtIpServer.CustomButton.Image = null;
-            this.txtIpServer.CustomButton.Location = new System.Drawing.Point(227, 1);
-            this.txtIpServer.CustomButton.Name = "";
-            this.txtIpServer.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtIpServer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtIpServer.CustomButton.TabIndex = 1;
-            this.txtIpServer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtIpServer.CustomButton.UseSelectable = true;
-            this.txtIpServer.CustomButton.Visible = false;
-            this.txtIpServer.Lines = new string[0];
-            this.txtIpServer.Location = new System.Drawing.Point(13, 56);
-            this.txtIpServer.MaxLength = 32767;
-            this.txtIpServer.Name = "txtIpServer";
-            this.txtIpServer.PasswordChar = '\0';
-            this.txtIpServer.PromptText = "Server Input";
-            this.txtIpServer.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtIpServer.SelectedText = "";
-            this.txtIpServer.SelectionLength = 0;
-            this.txtIpServer.SelectionStart = 0;
-            this.txtIpServer.ShortcutsEnabled = true;
-            this.txtIpServer.Size = new System.Drawing.Size(249, 23);
-            this.txtIpServer.TabIndex = 2;
-            this.txtIpServer.UseSelectable = true;
-            this.txtIpServer.WaterMark = "Server Input";
-            this.txtIpServer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtIpServer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(5, 17);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(131, 25);
-            this.metroLabel1.TabIndex = 3;
-            this.metroLabel1.Text = "Server Connect:";
-            // 
-            // btnCheckServerConnect
-            // 
-            this.btnCheckServerConnect.Location = new System.Drawing.Point(13, 141);
-            this.btnCheckServerConnect.Name = "btnCheckServerConnect";
-            this.btnCheckServerConnect.Size = new System.Drawing.Size(101, 34);
-            this.btnCheckServerConnect.TabIndex = 4;
-            this.btnCheckServerConnect.Text = "Test Connection";
-            this.btnCheckServerConnect.UseSelectable = true;
-            this.btnCheckServerConnect.Click += new System.EventHandler(this.btnCheckServerConnect_Click);
-            // 
-            // btnSaveIpServer
-            // 
-            this.btnSaveIpServer.Location = new System.Drawing.Point(161, 141);
-            this.btnSaveIpServer.Name = "btnSaveIpServer";
-            this.btnSaveIpServer.Size = new System.Drawing.Size(101, 34);
-            this.btnSaveIpServer.TabIndex = 4;
-            this.btnSaveIpServer.Text = "Save";
-            this.btnSaveIpServer.UseSelectable = true;
-            this.btnSaveIpServer.Click += new System.EventHandler(this.btnSaveIpServer_Click);
-            // 
-            // txtPortServer
-            // 
-            this.txtPortServer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            // 
-            // 
-            // 
-            this.txtPortServer.CustomButton.Image = null;
-            this.txtPortServer.CustomButton.Location = new System.Drawing.Point(227, 1);
-            this.txtPortServer.CustomButton.Name = "";
-            this.txtPortServer.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPortServer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPortServer.CustomButton.TabIndex = 1;
-            this.txtPortServer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPortServer.CustomButton.UseSelectable = true;
-            this.txtPortServer.CustomButton.Visible = false;
-            this.txtPortServer.Lines = new string[0];
-            this.txtPortServer.Location = new System.Drawing.Point(13, 99);
-            this.txtPortServer.MaxLength = 32767;
-            this.txtPortServer.Name = "txtPortServer";
-            this.txtPortServer.PasswordChar = '\0';
-            this.txtPortServer.PromptText = "Port Input";
-            this.txtPortServer.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPortServer.SelectedText = "";
-            this.txtPortServer.SelectionLength = 0;
-            this.txtPortServer.SelectionStart = 0;
-            this.txtPortServer.ShortcutsEnabled = true;
-            this.txtPortServer.Size = new System.Drawing.Size(249, 23);
-            this.txtPortServer.TabIndex = 2;
-            this.txtPortServer.UseSelectable = true;
-            this.txtPortServer.WaterMark = "Port Input";
-            this.txtPortServer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPortServer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,12 +451,12 @@
             this.mpnlSetting.ResumeLayout(false);
             this.metroTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
             this.metroPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pconnect)).EndInit();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

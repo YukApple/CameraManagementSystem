@@ -1,4 +1,5 @@
-﻿using CameraSystem.Views;
+﻿using CameraSystem.Data.Models;
+using CameraSystem.Views;
 using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Controls;
@@ -10,6 +11,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -58,6 +61,9 @@ namespace CameraSystem
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = Properties.Settings.Default.Theme;
             metroStyleManager1.Style = Properties.Settings.Default.Style;
+            WebRequest request = new WebRequest();
+            HttpResponseMessage message = request.getmachine().Result;
+            HttpStatusCode code = message.StatusCode;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -97,29 +103,33 @@ namespace CameraSystem
                     {
                         if (running)
                         {
-                            using (var client = new SimpleTcpClient())
-                            {
-                                client.Connect(serverIP, serverPort);
-                                Invoke((ThreadStart)delegate
-                                {
-                                    pconnect.Image = (Image)Properties.Resources.GLOBES_GREEN;
-                                    lblconnectstatus.Text = "Connected";
-                                });
-                                client.Disconnect();
-                                client.Dispose();
-                            }
+                            //using (var client = new SimpleTcpClient())
+                            //{
+                            //    client.Connect(serverIP, serverPort);
+                            //    Invoke((ThreadStart)delegate
+                            //    {
+                            //        pconnect.Image = (Image)Properties.Resources.GLOBES_GREEN;
+                            //        lblconnectstatus.Text = "Connected";
+                            //    });
+                            //    client.Disconnect();
+                            //    client.Dispose();
+                            //}
                         }
+                        else
+                            break;
                     }
                     catch (Exception ex)
                     {
                         if (running)
                         {
-                            Invoke((ThreadStart)delegate
-                            {
-                                pconnect.Image = (Image)Properties.Resources.GLOBES_RED;
-                                lblconnectstatus.Text = "DisConnected";
-                            });
+                            //Invoke((ThreadStart)delegate
+                            //{
+                            //    pconnect.Image = (Image)Properties.Resources.GLOBES_RED;
+                            //    lblconnectstatus.Text = "DisConnected";
+                            //});
                         }
+                        else
+                            break;
                     }
                 }
                 Thread.Sleep(1);
@@ -153,11 +163,9 @@ namespace CameraSystem
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MetroFramework.MetroMessageBox.Show(this, "Do you want to exit?", "Warning Close App", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MetroMessageBox.Show(this, "Do you want to exit?", "Warning Close App", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 running = false;
-                Thread.Sleep(100);
-                checkconnect.Abort();
             }
             else
             {

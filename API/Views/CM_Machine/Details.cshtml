@@ -1,0 +1,194 @@
+﻿@model API.Models.CM_Machine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CM_Machine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lineId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lineId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.socketId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.socketId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOCKETQTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOCKETQTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MACHINE_SPEC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MACHINE_SPEC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SCARA_YN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SCARA_YN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.portId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.portId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.processId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.processId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ip_equiment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ip_equiment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.log_path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.log_path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.log_path2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.log_path2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serial_machine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serial_machine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pathdll)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pathdll)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pathexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pathexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pathremote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pathremote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.softwarename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.softwarename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dllupdaterequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dllupdaterequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.getfolderrequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.getfolderrequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serverFTP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serverFTP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -883,7 +883,7 @@
           <Property Type="String" Name="Machine_Name" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Zone_Name" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Model_Name" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Line" Nullable="true" />
+          <Property Type="String" Name="Line" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Last_Update" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
