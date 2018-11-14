@@ -18,6 +18,8 @@ using SimpleTCP;
 using System.Net.Sockets;
 using System.Threading;
 using CommunicationTCP;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace CameraSystem.Views
 {
@@ -51,34 +53,39 @@ namespace CameraSystem.Views
             styleManager.Style = Main.Instance.ManageStyle.Style;
         }
 
-        private  void btnLoadAllMachine_Click(object sender, EventArgs e)
+        private async void btnLoadAllMachine_Click(object sender, EventArgs e)
         {
             waitForm.Show(main_parent);
-            if (chbdatabase.Checked)
-            {
-                try
-                {
-                    using (SCMSEntities db = new SCMSEntities())
-                    {
-                        machines = db.Proc_Machines().ToList();
-                        zones = db.Proc_FindAll_CM_Zone().ToList();
-                        lines = db.Proc_FindAll_CM_Line().ToList();
-                        models = db.Proc_FindAll_CM_Model().ToList();
-                        process = db.Proc_FindAll_CM_Process().ToList();
-                        procMachinesResultBindingSource.DataSource = machines;
-                        cMZoneBindingSource.DataSource = zones;
-                        cMLineBindingSource.DataSource = lines;
-                        cMModelBindingSource.DataSource = models;
-                        cMProcessBindingSource.DataSource = process;
-                        lblquantitymc.Text = machines.Count.ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
+            WebRequest request = new WebRequest();
+            HttpResponseMessage message = request.getmachine().Result;
+            string data = await message.Content.ReadAsStringAsync();
+            var mcs = JsonConvert.DeserializeObject<List<Proc_Machines_Result>>(data);
+            procMachinesResultBindingSource.DataSource = mcs;
+            //if (chbdatabase.Checked)
+            //{
+            //    try
+            //    {
+            //        using (SCMSEntities db = new SCMSEntities())
+            //        {
+            //            machines = db.Proc_Machines().ToList();
+            //            zones = db.Proc_FindAll_CM_Zone().ToList();
+            //            lines = db.Proc_FindAll_CM_Line().ToList();
+            //            models = db.Proc_FindAll_CM_Model().ToList();
+            //            process = db.Proc_FindAll_CM_Process().ToList();
+            //            procMachinesResultBindingSource.DataSource = machines;
+            //            cMZoneBindingSource.DataSource = zones;
+            //            cMLineBindingSource.DataSource = lines;
+            //            cMModelBindingSource.DataSource = models;
+            //            cMProcessBindingSource.DataSource = process;
+            //            lblquantitymc.Text = machines.Count.ToString();
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
 
-                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Information");
-                }
-            }
+            //        MetroFramework.MetroMessageBox.Show(this, ex.Message, "Information");
+            //    }
+            //}
             waitForm.Close();
         }
 

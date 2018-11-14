@@ -4,6 +4,7 @@ using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
+using Newtonsoft.Json;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,13 +63,15 @@ namespace CameraSystem
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = Properties.Settings.Default.Theme;
             metroStyleManager1.Style = Properties.Settings.Default.Style;
-            WebRequest request = new WebRequest();
-            HttpResponseMessage message = request.getmachine().Result;
-            HttpStatusCode code = message.StatusCode;
+            
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private async void Main_Load(object sender, EventArgs e)
         {
+            
+
+
+
             mpnlSetting.Visible = false;
             _instance = this;
             ULogin login = new ULogin();
