@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationTCP", "Communi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{78490A31-25AE-46CB-AC09-3D610D95590D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCore", "ApiCore\ApiCore.csproj", "{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,14 +81,6 @@ Global
 		{78490A31-25AE-46CB-AC09-3D610D95590D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78490A31-25AE-46CB-AC09-3D610D95590D}.Release|x86.ActiveCfg = Release|Any CPU
 		{78490A31-25AE-46CB-AC09-3D610D95590D}.Release|x86.Build.0 = Release|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Debug|x86.Build.0 = Debug|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Release|x86.ActiveCfg = Release|Any CPU
-		{9B9BE70B-8FF9-4BC1-82AA-D42F90CD684C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,12 +66,8 @@ namespace CameraSystem
             
         }
 
-        private async void Main_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            
-
-
-
             mpnlSetting.Visible = false;
             _instance = this;
             ULogin login = new ULogin();

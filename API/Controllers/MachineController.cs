@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API.Models;
+using API.Repository;
 using Newtonsoft.Json;
 
 namespace API.Controllers
@@ -21,7 +22,7 @@ namespace API.Controllers
         private SCMSEntities db = new SCMSEntities();
 
         // GET: api/Machine
-        public IQueryable<CM_Machine> GetCM_Machine()
+        public IEnumerable<CM_Machine> GetCM_Machine()
         {
             return db.CM_Machine;
         }

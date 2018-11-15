@@ -11,17 +11,13 @@ namespace API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.Add(config.Formatters.JsonFormatter);
+
+            config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
-              new MediaTypeWithQualityHeaderValue("application/json")
-            );
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
-            new MediaTypeHeaderValue("application/json"));
-            GlobalConfiguration.Configuration.Formatters.JsonFormatter
-            .SerializerSettings.ReferenceLoopHandling =
-            Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

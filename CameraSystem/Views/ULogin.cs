@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using MetroFramework.Controls;
 using MetroFramework.Components;
 using CameraSystem.Data.Models;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace CameraSystem.Views
 {
     public partial class ULogin : MetroUserControl
     {
-        
+        WaitWndFun waitForm = new WaitWndFun();
+        Main main_parent = Main.Instance;
         public ULogin()
         {
             InitializeComponent();
@@ -53,8 +56,9 @@ namespace CameraSystem.Views
             }
         }
 
-        private void onLogin_Click(object sender, EventArgs e)
+        private async void onLogin_Click(object sender, EventArgs e)
         {
+            waitForm.Show(main_parent);
             if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Please input password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -65,57 +69,53 @@ namespace CameraSystem.Views
                 MetroFramework.MetroMessageBox.Show(this, "Please input Username", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            try
+            WebRequest request = new WebRequest();
+            HttpResponseMessage acc = request.getaccount().Result;
+            string account = await acc.Content.ReadAsStringAsync();
+            var accounts = JsonConvert.DeserializeObject<List<CM_Account>>(account);
+            
+            var passmd5 = Helpers.ToMD5(txtPassword.Text.Trim());
+            var user_valid = accounts.Exists(a => a.GEN.Trim() == txtUsername.Text.Trim() && a.password.Trim() == passmd5);
+            if (user_valid)
             {
-                using (var db = new SCMSEntities())
+                if(chkmemo.Checked)
                 {
-                    var passmd5 = Helpers.ToMD5(txtPassword.Text.Trim());
-                    var user_valid = db.Proc_FindUser_CM_Account(txtUsername.Text.Trim(), passmd5).ToList();
-                    if (user_valid.Count > 0)
+                    if(Helpers.isExistsSetting("remembercheck"))
                     {
-                        if(chkmemo.Checked)
-                        {
-                            if(Helpers.isExistsSetting("remembercheck"))
-                            {
-                                Helpers.SetSetting("remembercheck", "1");
-                                Helpers.SetSetting("username", txtUsername.Text.Trim());
-                            }
-                            else
-                            {
-                                Helpers.AddSetting("remembercheck", "1");
-                                Helpers.AddSetting("username", txtUsername.Text.Trim());
-                            }
-                        }
-                        else
-                        {
-                            if (Helpers.isExistsSetting("remembercheck"))
-                            {
-                                Helpers.SetSetting("remembercheck", "0");
-                                Helpers.SetSetting("username", txtUsername.Text.Trim());
-                            }
-                            else
-                            {
-                                Helpers.AddSetting("remembercheck", "0");
-                                Helpers.AddSetting("username", txtUsername.Text.Trim());
-                            }
-                        }
-                        UDllUpdate dashboard = new UDllUpdate();
-                        dashboard.Dock = DockStyle.Fill;
-                        Main.Instance.MetroContainer.Controls.Clear();
-                        Main.Instance.MetroContainer.Controls.Add(dashboard);
+                        Helpers.SetSetting("remembercheck", "1");
+                        Helpers.SetSetting("username", txtUsername.Text.Trim());
                     }
                     else
                     {
-                        MetroFramework.MetroMessageBox.Show(this, "Please check user or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Clear_Input();
+                        Helpers.AddSetting("remembercheck", "1");
+                        Helpers.AddSetting("username", txtUsername.Text.Trim());
                     }
                 }
+                else
+                {
+                    if (Helpers.isExistsSetting("remembercheck"))
+                    {
+                        Helpers.SetSetting("remembercheck", "0");
+                        Helpers.SetSetting("username", txtUsername.Text.Trim());
+                    }
+                    else
+                    {
+                        Helpers.AddSetting("remembercheck", "0");
+                        Helpers.AddSetting("username", txtUsername.Text.Trim());
+                    }
+                }
+                UDllUpdate dashboard = new UDllUpdate();
+                dashboard.Dock = DockStyle.Fill;
+                Main.Instance.MetroContainer.Controls.Clear();
+                Main.Instance.MetroContainer.Controls.Add(dashboard);
             }
-            catch (Exception)
+            else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please check connect to server", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "Please check user or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Clear_Input();
             }
-            
+            waitForm.Close();
+
         }
 
         private void onRegister_Click(object sender, EventArgs e)

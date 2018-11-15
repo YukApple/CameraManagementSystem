@@ -27,6 +27,56 @@ namespace CameraSystem.Data.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Check_Application> Check_Application { get; set; }
+        public virtual DbSet<CM_Account> CM_Account { get; set; }
+        public virtual DbSet<CM_AVI_Log> CM_AVI_Log { get; set; }
+        public virtual DbSet<CM_Department> CM_Department { get; set; }
+        public virtual DbSet<CM_Error> CM_Error { get; set; }
+        public virtual DbSet<CM_FTP_Log> CM_FTP_Log { get; set; }
+        public virtual DbSet<CM_Line> CM_Line { get; set; }
+        public virtual DbSet<CM_Log_Machine> CM_Log_Machine { get; set; }
+        public virtual DbSet<CM_Machine> CM_Machine { get; set; }
+        public virtual DbSet<CM_Machine_Directory> CM_Machine_Directory { get; set; }
+        public virtual DbSet<CM_Machine_DLL> CM_Machine_DLL { get; set; }
+        public virtual DbSet<CM_Model> CM_Model { get; set; }
+        public virtual DbSet<CM_ModelChange> CM_ModelChange { get; set; }
+        public virtual DbSet<CM_Port> CM_Port { get; set; }
+        public virtual DbSet<CM_Process> CM_Process { get; set; }
+        public virtual DbSet<CM_Project> CM_Project { get; set; }
+        public virtual DbSet<CM_Roles> CM_Roles { get; set; }
+        public virtual DbSet<CM_Socket> CM_Socket { get; set; }
+        public virtual DbSet<CM_Title> CM_Title { get; set; }
+        public virtual DbSet<CM_Zone> CM_Zone { get; set; }
+        public virtual DbSet<History_check_app> History_check_app { get; set; }
+        public virtual DbSet<QM_DualCal> QM_DualCal { get; set; }
+        public virtual DbSet<QM_DualCAL_Handler> QM_DualCAL_Handler { get; set; }
+        public virtual DbSet<QM_FT_50cm_Tele> QM_FT_50cm_Tele { get; set; }
+        public virtual DbSet<QM_FT_AF_Cal_Rangechecklog> QM_FT_AF_Cal_Rangechecklog { get; set; }
+        public virtual DbSet<QM_FT_Handler> QM_FT_Handler { get; set; }
+        public virtual DbSet<QM_FT_Image_RGBLog_Tele> QM_FT_Image_RGBLog_Tele { get; set; }
+        public virtual DbSet<QM_FT_Image_RGBLog_Wide> QM_FT_Image_RGBLog_Wide { get; set; }
+        public virtual DbSet<QM_FT_Image_Samsung_Vignettinglog_Wide> QM_FT_Image_Samsung_Vignettinglog_Wide { get; set; }
+        public virtual DbSet<QM_FT_LongAF_Tele> QM_FT_LongAF_Tele { get; set; }
+        public virtual DbSet<QM_FT_LongAF_Wide_B_F15> QM_FT_LongAF_Wide_B_F15 { get; set; }
+        public virtual DbSet<QM_FT_LongAF_Wide_B_F24> QM_FT_LongAF_Wide_B_F24 { get; set; }
+        public virtual DbSet<QM_FT_Marco_AF> QM_FT_Marco_AF { get; set; }
+        public virtual DbSet<QM_HORI_Handler> QM_HORI_Handler { get; set; }
+        public virtual DbSet<QM_Ois> QM_Ois { get; set; }
+        public virtual DbSet<QM_Ois_Singer> QM_Ois_Singer { get; set; }
+        public virtual DbSet<QM_PAF_AE_Cal_Ratio> QM_PAF_AE_Cal_Ratio { get; set; }
+        public virtual DbSet<QM_PAF_Handler> QM_PAF_Handler { get; set; }
+        public virtual DbSet<QM_PAF_Tele_AE_Cal_Check> QM_PAF_Tele_AE_Cal_Check { get; set; }
+        public virtual DbSet<QM_PAF_Tele_AFcode_Compare> QM_PAF_Tele_AFcode_Compare { get; set; }
+        public virtual DbSet<QM_PAF_Tele_Pan_AF_100cm> QM_PAF_Tele_Pan_AF_100cm { get; set; }
+        public virtual DbSet<QM_PAF_Wide_AFcode_Compare> QM_PAF_Wide_AFcode_Compare { get; set; }
+        public virtual DbSet<QM_PAF_Wide_Macro_AF> QM_PAF_Wide_Macro_AF { get; set; }
+        public virtual DbSet<QM_PAF_Wide_Panpos> QM_PAF_Wide_Panpos { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         [DbFunction("SCMSEntities", "GET_FTP_LOGGER")]
         public virtual IQueryable<GET_FTP_LOGGER_Result> GET_FTP_LOGGER(Nullable<int> mODEL, Nullable<int> iNSPECTION)

@@ -57,35 +57,39 @@ namespace CameraSystem.Views
         {
             waitForm.Show(main_parent);
             WebRequest request = new WebRequest();
-            HttpResponseMessage message = request.getmachine().Result;
-            string data = await message.Content.ReadAsStringAsync();
-            var mcs = JsonConvert.DeserializeObject<List<Proc_Machines_Result>>(data);
-            procMachinesResultBindingSource.DataSource = mcs;
-            //if (chbdatabase.Checked)
-            //{
-            //    try
-            //    {
-            //        using (SCMSEntities db = new SCMSEntities())
-            //        {
-            //            machines = db.Proc_Machines().ToList();
-            //            zones = db.Proc_FindAll_CM_Zone().ToList();
-            //            lines = db.Proc_FindAll_CM_Line().ToList();
-            //            models = db.Proc_FindAll_CM_Model().ToList();
-            //            process = db.Proc_FindAll_CM_Process().ToList();
-            //            procMachinesResultBindingSource.DataSource = machines;
-            //            cMZoneBindingSource.DataSource = zones;
-            //            cMLineBindingSource.DataSource = lines;
-            //            cMModelBindingSource.DataSource = models;
-            //            cMProcessBindingSource.DataSource = process;
-            //            lblquantitymc.Text = machines.Count.ToString();
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
+            HttpResponseMessage httpmachine = request.getmachine().Result;
+            HttpResponseMessage httpzone= request.getzone().Result;
+            HttpResponseMessage httpline = request.getline().Result;
+            HttpResponseMessage httpprocess = request.getprocess().Result;
+            HttpResponseMessage httpmodel = request.getmodel().Result;
+            string machinedata = await httpmachine.Content.ReadAsStringAsync();
+            string zonedata = await httpzone.Content.ReadAsStringAsync();
+            string linedata = await httpline.Content.ReadAsStringAsync();
+            string modeldata = await httpmodel.Content.ReadAsStringAsync();
+            string processdata = await httpprocess.Content.ReadAsStringAsync();
+            if (chbdatabase.Checked)
+            {
+                try
+                {
+                    machines = JsonConvert.DeserializeObject<List<Proc_Machines_Result>>(machinedata);
+                    zones = JsonConvert.DeserializeObject<List<Proc_FindAll_CM_Zone_Result>>(zonedata);
+                    lines = JsonConvert.DeserializeObject<List<Proc_FindAll_CM_Line_Result>>(linedata);
+                    models = JsonConvert.DeserializeObject<List<Proc_FindAll_CM_Model_Result>>(modeldata);
+                    process = JsonConvert.DeserializeObject<List<Proc_FindAll_CM_Process_Result>>(processdata);
+                    procMachinesResultBindingSource.DataSource = machines;
+                    cMZoneBindingSource.DataSource = zones;
+                    cMLineBindingSource.DataSource = lines;
+                    cMModelBindingSource.DataSource = models;
+                    cMProcessBindingSource.DataSource = process;
+                    lblquantitymc.Text = machines.Count.ToString();
+            
+                }
+                catch (Exception ex)
+                {
 
-            //        MetroFramework.MetroMessageBox.Show(this, ex.Message, "Information");
-            //    }
-            //}
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Information");
+                }
+            }
             waitForm.Close();
         }
 
@@ -130,40 +134,23 @@ namespace CameraSystem.Views
         private void btnApply_Click(object sender, EventArgs e)
         {
             waitForm.Show(main_parent);
-            using (var db = new SCMSEntities())
+            var mcfilter = machines.Where(m => m.Zone_Name == cbbZone.Text && m.Model_Name == cbbModel.Text && m.Line == cbbLine.Text && m.Process_Name == cbbProcess.Text).ToList();
+            if (chkconnected.Checked)
             {
-                var mcfilter = machines.Where(m => m.Zone_Name == cbbZone.Text && m.Model_Name == cbbModel.Text && m.Line == cbbLine.Text && m.Process_Name == cbbProcess.Text).ToList();
-                if (chkconnected.Checked)
+                List<Proc_Machines_Result> mcs = new List<Proc_Machines_Result>();
+                List<MachineOnlineModel> mcOn = new List<MachineOnlineModel>();
+                foreach (var mc in mcfilter)
                 {
-                    List<Proc_Machines_Result> mcs = new List<Proc_Machines_Result>();
-                    List<MachineOnlineModel> mcOn = new List<MachineOnlineModel>();
-                    foreach (var mc in mcfilter)
-                    {
-                        MachineOnlineModel mcO = new MachineOnlineModel();
-                        mcO.IP = mc.IP.Trim();
-                        mcOn.Add(mcO);
-                        try
-                        {
-                            var client = new SimpleTcpClient().Connect(mc.IP.Trim(), 1000);
-                            mcs.Add(mc);
-
-                        }
-                        catch (Exception ex)
-                        {
-                            //MetroFramework.MetroMessageBox.Show(this, "Please check connect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            continue;
-                        }
-
-                    }
-                    procMachinesResultBindingSource.DataSource = mcs;
-                    //var sendcmd = Helpers.SendCommand(mcOn, Helpers.CommandMethod.GET, "MachineOnlineModel");
-                    //client.WriteLine(sendcmd);
+                    MachineOnlineModel mcO = new MachineOnlineModel();
+                    mcO.IP = mc.IP.Trim();
+                    mcOn.Add(mcO);
+                    mcs.Add(mc);
                 }
-                else
-                {
-                    procMachinesResultBindingSource.DataSource = mcfilter;
-                }
-                
+                procMachinesResultBindingSource.DataSource = mcs;
+            }
+            else
+            {
+                procMachinesResultBindingSource.DataSource = mcfilter;
             }
             waitForm.Close();
         }
