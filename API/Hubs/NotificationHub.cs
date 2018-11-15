@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using API.Models;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 
@@ -11,21 +12,39 @@ namespace API.Hubs
 {
     public class NotificationHub : Hub
     {
+        public static bool isRunning = false;
         public NotificationHub()
         {
-            Task.Factory.StartNew(()=> {
-                while (true)
+            if (!isRunning)
+            {
+                Task.Factory.StartNew(async () =>
                 {
-                    TimeServer();
-                    Thread.Sleep(2000);
+                    while (true)
+                    {
+                        using (SCMSEntities db = new SCMSEntities())
+                        {
+                            try
+                            {
+                                var data = db.Proc_Machines().ToList();
+                                Clients.All.Machines(data);
+                            }
+                            catch (Exception e)
+                            {
+                                Clients.All.Error("Error:\r\n" + e.Message);
+                            }
+                        }
+                        await Task.Delay(5000);
+                    }
+                }, TaskCreationOptions.RunContinuationsAsynchronously);
+                
 
-                }
-            });
+                isRunning = true;
+            }
         }
-        public static void Show()
+        public void Show()
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
-            context.Clients.All.displayStatus();
+            context.Clients.All.DisplayMessage("Nguyen Van Nguyen");
         }
 
         public void TimeServer()
