@@ -85,6 +85,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\timg11.gif" />
+    <None Include="WaitWnd.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\source.gif" />

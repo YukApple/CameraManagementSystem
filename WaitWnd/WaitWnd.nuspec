@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NMetroWaitForm</id>
+    <version>1.0.0.0</version>
+    <title>Metro Wait Form</title>
+    <authors>Nguyen</authors>
+    <owners>Nguyen</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Waiting Form</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Wait Nguyen</tags>
+  </metadata>
+  <files>
+    <file src="bin\Debug\WaitWnd.dll" target="lib"></file>
+    <file src="bin\Debug\MetroFramework.Fonts.dll" target="lib"></file>
+    <file src="bin\Debug\MetroFramework.dll" target="lib"></file>
+    <file src="bin\Debug\MetroFramework.Design.dll" target="lib"></file>
+  </files>
+</package>
